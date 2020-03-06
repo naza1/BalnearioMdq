@@ -21,15 +21,15 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 		include("../funciones.php");
 		// escaping, additionally removing everything that could be (html/javascript-) code
-		$codigo=mysqli_real_escape_string($con,(strip_tags($_POST["codigo"],ENT_QUOTES)));
-		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
+		$codigo=mysqli_real_escape_string($conn,(strip_tags($_POST["codigo"],ENT_QUOTES)));
+		$nombre=mysqli_real_escape_string($conn,(strip_tags($_POST["nombre"],ENT_QUOTES)));
 		$stock=intval($_POST['stock']);
 		$id_categoria=intval($_POST['categoria']);
 		$precio_venta=floatval($_POST['precio']);
 		$date_added=date("Y-m-d H:i:s");
 		
 		$sql="INSERT INTO products (codigo_producto, nombre_producto, date_added, precio_producto, stock, id_categoria) VALUES ('$codigo','$nombre','$date_added','$precio_venta', '$stock','$id_categoria')";
-		$query_new_insert = mysqli_query($con,$sql);
+		$query_new_insert = mysqli_query($conn,$sql);
 			if ($query_new_insert){
 				$messages[] = "Producto ha sido ingresado satisfactoriamente.";
 				$id_producto=get_row('products','id_producto', 'codigo_producto', $codigo);
@@ -39,7 +39,7 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 				echo guardar_historial($id_producto,$user_id,$date_added,$nota,$codigo,$stock);
 				
 			} else{
-				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
+				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($conn);
 			}
 		} else {
 			$errors []= "Error desconocido.";

@@ -8,15 +8,15 @@
 		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 		// escaping, additionally removing everything that could be (html/javascript-) code
-		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
-		$descripcion=mysqli_real_escape_string($con,(strip_tags($_POST["descripcion"],ENT_QUOTES)));
+		$nombre=mysqli_real_escape_string($conn,(strip_tags($_POST["nombre"],ENT_QUOTES)));
+		$descripcion=mysqli_real_escape_string($conn,(strip_tags($_POST["descripcion"],ENT_QUOTES)));
 		$date_added=date("Y-m-d H:i:s");
 		$sql="INSERT INTO pasillos (nombre_pasillo,descripcion_pasillo,date_added) VALUES ('$nombre','$descripcion','$date_added')";
-		$query_new_insert = mysqli_query($con,$sql);
+		$query_new_insert = mysqli_query($conn,$sql);
 			if ($query_new_insert){
 				$messages[] = "Categoría ha sido ingresada satisfactoriamente.";
 			} else{
-				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
+				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($conn);
 			}
 		} else {
 			$errors []= "Error desconocido.";

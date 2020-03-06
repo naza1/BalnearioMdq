@@ -1,5 +1,5 @@
 	<?php
-		if (isset($con))
+		if (isset($conn))
 		{
 	?>
 	<!-- Modal -->

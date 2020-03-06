@@ -1,9 +1,5 @@
 <?php
-	/*-------------------------
-	Autor: Obed Alvarado
-	Web: obedalvarado.pw
-	Mail: info@obedalvarado.pw
-	---------------------------*/
+  
 	session_start();
 	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: login.php");
@@ -22,7 +18,7 @@
 	
 	if (isset($_POST['reference']) and isset($_POST['quantity'])){
 		$quantity=intval($_POST['quantity']);
-		$reference=mysqli_real_escape_string($con,(strip_tags($_POST["reference"],ENT_QUOTES)));
+		$reference=mysqli_real_escape_string($conn,(strip_tags($_POST["reference"],ENT_QUOTES)));
 		$id_producto=intval($_GET['id']);
 		$user_id=$_SESSION['user_id'];
 		$firstname=$_SESSION['firstname'];
@@ -39,7 +35,7 @@
 	
 	if (isset($_POST['reference_remove']) and isset($_POST['quantity_remove'])){
 		$quantity=intval($_POST['quantity_remove']);
-		$reference=mysqli_real_escape_string($con,(strip_tags($_POST["reference_remove"],ENT_QUOTES)));
+		$reference=mysqli_real_escape_string($conn,(strip_tags($_POST["reference_remove"],ENT_QUOTES)));
 		$id_producto=intval($_GET['id']);
 		$user_id=$_SESSION['user_id'];
 		$firstname=$_SESSION['firstname'];
@@ -56,7 +52,7 @@
 	
 	if (isset($_GET['id'])){
 		$id_producto=intval($_GET['id']);
-		$query=mysqli_query($con,"select * from products where id_producto='$id_producto'");
+		$query=mysqli_query($conn,"select * from products where id_producto='$id_producto'");
 		$row=mysqli_fetch_array($query);
 		
 	} else {
@@ -166,7 +162,7 @@
 							<td class='text-center'>Total</td>
 						</tr>
 						<?php
-							$query=mysqli_query($con,"select * from historial where id_producto='$id_producto'");
+							$query=mysqli_query($conn,"select * from historial where id_producto='$id_producto'");
 							while ($row=mysqli_fetch_array($query)){
 								?>
 						<tr>

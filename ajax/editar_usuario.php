@@ -40,10 +40,10 @@ if (version_compare(PHP_VERSION, '5.3.7', '<')) {
 			require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 			
 				// escaping, additionally removing everything that could be (html/javascript-) code
-                $firstname = mysqli_real_escape_string($con,(strip_tags($_POST["firstname2"],ENT_QUOTES)));
-				$lastname = mysqli_real_escape_string($con,(strip_tags($_POST["lastname2"],ENT_QUOTES)));
-				$user_name = mysqli_real_escape_string($con,(strip_tags($_POST["user_name2"],ENT_QUOTES)));
-                $user_email = mysqli_real_escape_string($con,(strip_tags($_POST["user_email2"],ENT_QUOTES)));
+                $firstname = mysqli_real_escape_string($conn,(strip_tags($_POST["firstname2"],ENT_QUOTES)));
+				$lastname = mysqli_real_escape_string($conn,(strip_tags($_POST["lastname2"],ENT_QUOTES)));
+				$user_name = mysqli_real_escape_string($conn,(strip_tags($_POST["user_name2"],ENT_QUOTES)));
+                $user_email = mysqli_real_escape_string($conn,(strip_tags($_POST["user_email2"],ENT_QUOTES)));
 				
 				$user_id=intval($_POST['mod_id']);
 					
@@ -51,7 +51,7 @@ if (version_compare(PHP_VERSION, '5.3.7', '<')) {
 					// write new user's data into database
                     $sql = "UPDATE users SET firstname='".$firstname."', lastname='".$lastname."', user_name='".$user_name."', user_email='".$user_email."'
                             WHERE user_id='".$user_id."';";
-                    $query_update = mysqli_query($con,$sql);
+                    $query_update = mysqli_query($conn,$sql);
 
                     // if user has been added successfully
                     if ($query_update) {

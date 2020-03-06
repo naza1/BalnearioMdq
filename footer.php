@@ -1,7 +1,7 @@
 <div class="navbar navbar-default navbar-fixed-bottom" >
     <div class="container">
       <p class="navbar-text pull-left">&copy <?php echo date('Y');?> - Alejandro Clerc - 
-           <a href="http://obedalvarado.pw/" target="_blank" style="color: #ecf0f1">Sitios Web y Sistemas</a>
+           <a href="" target="_blank" style="color: #ecf0f1">Sitios Web y Sistemas</a>
       </p>
    </div>
 </div>

@@ -49,10 +49,10 @@ if (version_compare(PHP_VERSION, '5.3.7', '<')) {
 			require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 			
 				// escaping, additionally removing everything that could be (html/javascript-) code
-                $firstname = mysqli_real_escape_string($con,(strip_tags($_POST["firstname"],ENT_QUOTES)));
-				$lastname = mysqli_real_escape_string($con,(strip_tags($_POST["lastname"],ENT_QUOTES)));
-				$user_name = mysqli_real_escape_string($con,(strip_tags($_POST["user_name"],ENT_QUOTES)));
-                $user_email = mysqli_real_escape_string($con,(strip_tags($_POST["user_email"],ENT_QUOTES)));
+                $firstname = mysqli_real_escape_string($conn,(strip_tags($_POST["firstname"],ENT_QUOTES)));
+				$lastname = mysqli_real_escape_string($conn,(strip_tags($_POST["lastname"],ENT_QUOTES)));
+				$user_name = mysqli_real_escape_string($conn,(strip_tags($_POST["user_name"],ENT_QUOTES)));
+                $user_email = mysqli_real_escape_string($conn,(strip_tags($_POST["user_email"],ENT_QUOTES)));
 				$user_password = $_POST['user_password_new'];
 				$date_added=date("Y-m-d H:i:s");
                 // crypt the user's password with PHP 5.5's password_hash() function, results in a 60 character
@@ -62,7 +62,7 @@ if (version_compare(PHP_VERSION, '5.3.7', '<')) {
 					
                 // check if user or email address already exists
                 $sql = "SELECT * FROM users WHERE user_name = '" . $user_name . "' OR user_email = '" . $user_email . "';";
-                $query_check_user_name = mysqli_query($con,$sql);
+                $query_check_user_name = mysqli_query($conn,$sql);
 				$query_check_user=mysqli_num_rows($query_check_user_name);
                 if ($query_check_user == 1) {
                     $errors[] = "Lo sentimos , el nombre de usuario ó la dirección de correo electrónico ya está en uso.";
@@ -70,7 +70,7 @@ if (version_compare(PHP_VERSION, '5.3.7', '<')) {
 					// write new user's data into database
                     $sql = "INSERT INTO users (firstname, lastname, user_name, user_password_hash, user_email, date_added)
                             VALUES('".$firstname."','".$lastname."','" . $user_name . "', '" . $user_password_hash . "', '" . $user_email . "','".$date_added."');";
-                    $query_new_user_insert = mysqli_query($con,$sql);
+                    $query_new_user_insert = mysqli_query($conn,$sql);
 
                     // if user has been added successfully
                     if ($query_new_user_insert) {

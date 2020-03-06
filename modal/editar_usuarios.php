@@ -1,5 +1,5 @@
 	<?php
-		if (isset($con))
+		if (isset($conn))
 		{
 	?>
 	<!-- Modal -->
@@ -50,7 +50,7 @@
 					<select class='form-control' name='perfil' id='perfil' required>
 						<option value="">Selecciona un Perfil</option>
 							<?php 
-							$query_perfil=mysqli_query($con,"select * from perfiles order by perfil_id");
+							$query_perfil=mysqli_query($conn,"select * from perfiles order by perfil_id");
 							while($rw=mysqli_fetch_array($query_perfil))	{
 								?>
 							<option value="<?php echo $rw['id_perfil'];?>"><?php echo $rw['perfil_tipo'];?></option>			

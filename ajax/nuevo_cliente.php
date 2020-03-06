@@ -39,20 +39,20 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 		include("../funciones.php");
 		// escaping, additionally removing everything that could be (html/javascript-) code
 		
-		//$id_carpa=mysqli_real_escape_string($con,(strip_tags($_POST["id_carpa"],ENT_QUOTES)));
-		$name = mysqli_real_escape_string($con,(strip_tags($_POST["name"],ENT_QUOTES)));
-		$dni = mysqli_real_escape_string($con,(strip_tags($_POST["documento"],ENT_QUOTES)));
-		$direccion = mysqli_real_escape_string($con,(strip_tags($_POST["direccion"],ENT_QUOTES)));
-		$localidad = mysqli_real_escape_string($con,(strip_tags($_POST["localidad"],ENT_QUOTES)));
-		$telefono = mysqli_real_escape_string($con,(strip_tags($_POST["telefono"],ENT_QUOTES)));
-		$email = mysqli_real_escape_string($con,(strip_tags($_POST["email"],ENT_QUOTES)));
+		//$id_carpa=mysqli_real_escape_string($conn,(strip_tags($_POST["id_carpa"],ENT_QUOTES)));
+		$name = mysqli_real_escape_string($conn,(strip_tags($_POST["name"],ENT_QUOTES)));
+		$dni = mysqli_real_escape_string($conn,(strip_tags($_POST["documento"],ENT_QUOTES)));
+		$direccion = mysqli_real_escape_string($conn,(strip_tags($_POST["direccion"],ENT_QUOTES)));
+		$localidad = mysqli_real_escape_string($conn,(strip_tags($_POST["localidad"],ENT_QUOTES)));
+		$telefono = mysqli_real_escape_string($conn,(strip_tags($_POST["telefono"],ENT_QUOTES)));
+		$email = mysqli_real_escape_string($conn,(strip_tags($_POST["email"],ENT_QUOTES)));
 		// $ocupacion_actual=intval($_POST['cupo']);
 		// $id_pasillo=intval($_POST['pasillo']);
 		$date_added=date("Y-m-d H:i:s");
 		
 		$sql="INSERT INTO clientes (nombre, dni, domicilio, localidad, telefono, email, date_added) 
 		VALUES ('$name','$dni','$direccion','$localidad', '$telefono','$email', '$date_added')";
-		$query_new_insert = mysqli_query($con,$sql);
+		$query_new_insert = mysqli_query($conn,$sql);
 			if ($query_new_insert){
 				$messages[] = "El cliente ha sido grabado satisfactoriamente.";
 				// $id_producto=get_row('products','id_producto', 'codigo_producto', $codigo);
@@ -62,7 +62,7 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 				// echo guardar_historial($id_producto,$user_id,$date_added,$nota,$codigo,$stock);
 				
 			} else{
-				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
+				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($conn);
 			}
 		} else {
 			$errors []= "Error desconocido.";

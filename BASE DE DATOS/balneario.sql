@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 22-01-2020 a las 00:46:53
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.1.31
+-- Host: 127.0.0.1
+-- Generation Time: Mar 06, 2020 at 06:57 PM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `balneario`
+-- Database: `balneario`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `carpa`
+-- Table structure for table `carpa`
 --
 
 CREATE TABLE `carpa` (
@@ -46,33 +46,33 @@ CREATE TABLE `carpa` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `clientes`
+-- Table structure for table `clientes`
 --
 
 CREATE TABLE `clientes` (
-  `cliente_id` int(11) NOT NULL,
-  `cliente_nombreyapellido` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `cliente_nro_documento` int(11) NOT NULL,
-  `cliente_domicilio` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `cliente_localidad` varchar(155) COLLATE utf8_unicode_ci NOT NULL,
-  `cliente_telefono` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `cliente_email` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `nombre` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `dni` int(11) NOT NULL,
+  `domicilio` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `localidad` varchar(155) COLLATE utf8_unicode_ci NOT NULL,
+  `telefono` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `date_added` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='client data';
 
 --
--- Volcado de datos para la tabla `clientes`
+-- Dumping data for table `clientes`
 --
 
-INSERT INTO `clientes` (`cliente_id`, `cliente_nombreyapellido`, `cliente_nro_documento`, `cliente_domicilio`, `cliente_localidad`, `cliente_telefono`, `cliente_email`, `date_added`) VALUES
+INSERT INTO `clientes` (`id`, `nombre`, `dni`, `domicilio`, `localidad`, `telefono`, `email`, `date_added`) VALUES
 (1, 'Alejandro Miguel Clerc', 24914014, 'Brown 3964', 'Mar del Plata', '0223155985815', 'alejandroclerc@gmail.com', '2016-12-19 15:06:00'),
 (2, 'Andrea Blondeau', 24914014, 'Brown 3964', 'Mar del Plata', '0223155985815', 'alejandroclerc@gmail.com', '2016-12-19 15:06:00'),
-(3, 'Matias Rodriguez', 24914014, 'Brown 3964', 'Mar del Plata', '0223155985815', 'alejandroclerc@gmail.com', '2016-12-19 15:06:00');
+(3, 'Matias Rodriguez', 24914017, 'Brown 3964', 'Mar del Plata', '0223155985815', 'alejandroclerc@gmail.com', '2016-12-19 15:06:00');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cocheras`
+-- Table structure for table `cocheras`
 --
 
 CREATE TABLE `cocheras` (
@@ -86,7 +86,7 @@ CREATE TABLE `cocheras` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `cocheras`
+-- Dumping data for table `cocheras`
 --
 
 INSERT INTO `cocheras` (`id_cochera`, `numero_cochera`, `cochera_tipo`, `tipo_contrato`, `nro_patente`, `observaciones`, `date_added`) VALUES
@@ -99,7 +99,7 @@ INSERT INTO `cocheras` (`id_cochera`, `numero_cochera`, `cochera_tipo`, `tipo_co
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `material_identificacion`
+-- Table structure for table `material_identificacion`
 --
 
 CREATE TABLE `material_identificacion` (
@@ -110,7 +110,7 @@ CREATE TABLE `material_identificacion` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `material_identificacion`
+-- Dumping data for table `material_identificacion`
 --
 
 INSERT INTO `material_identificacion` (`id_identificacion`, `situacion`, `descripcion_material`, `date_added`) VALUES
@@ -121,7 +121,7 @@ INSERT INTO `material_identificacion` (`id_identificacion`, `situacion`, `descri
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pasillos`
+-- Table structure for table `pasillos`
 --
 
 CREATE TABLE `pasillos` (
@@ -132,7 +132,7 @@ CREATE TABLE `pasillos` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `pasillos`
+-- Dumping data for table `pasillos`
 --
 
 INSERT INTO `pasillos` (`id_pasillo`, `nombre_pasillo`, `descripcion_pasillo`, `date_added`) VALUES
@@ -155,7 +155,7 @@ INSERT INTO `pasillos` (`id_pasillo`, `nombre_pasillo`, `descripcion_pasillo`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `perfiles`
+-- Table structure for table `perfiles`
 --
 
 CREATE TABLE `perfiles` (
@@ -165,7 +165,7 @@ CREATE TABLE `perfiles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `perfiles`
+-- Dumping data for table `perfiles`
 --
 
 INSERT INTO `perfiles` (`perfil_id`, `perfil_tipo`, `perfil_detalle`) VALUES
@@ -180,7 +180,7 @@ INSERT INTO `perfiles` (`perfil_id`, `perfil_tipo`, `perfil_detalle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -196,7 +196,7 @@ CREATE TABLE `products` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipos_cochera`
+-- Table structure for table `tipos_cochera`
 --
 
 CREATE TABLE `tipos_cochera` (
@@ -206,7 +206,7 @@ CREATE TABLE `tipos_cochera` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tipos_cochera`
+-- Dumping data for table `tipos_cochera`
 --
 
 INSERT INTO `tipos_cochera` (`tipocochera_id`, `cochera_tipo`, `cochera_detalle`) VALUES
@@ -217,7 +217,7 @@ INSERT INTO `tipos_cochera` (`tipocochera_id`, `cochera_tipo`, `cochera_detalle`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipos_contrato`
+-- Table structure for table `tipos_contrato`
 --
 
 CREATE TABLE `tipos_contrato` (
@@ -228,7 +228,7 @@ CREATE TABLE `tipos_contrato` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `tipos_contrato`
+-- Dumping data for table `tipos_contrato`
 --
 
 INSERT INTO `tipos_contrato` (`id_contrato`, `tipo_contrato`, `descripcion_contrato`, `date_added`) VALUES
@@ -242,7 +242,7 @@ INSERT INTO `tipos_contrato` (`id_contrato`, `tipo_contrato`, `descripcion_contr
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -256,7 +256,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user data';
 
 --
--- Volcado de datos para la tabla `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `user_name`, `user_password_hash`, `user_email`, `date_added`) VALUES
@@ -265,7 +265,7 @@ INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `user_name`, `user_pass
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -281,30 +281,36 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user data';
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `pasillos`
+-- Indexes for table `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pasillos`
 --
 ALTER TABLE `pasillos`
   ADD PRIMARY KEY (`id_pasillo`);
 
 --
--- Indices de la tabla `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id_producto`),
   ADD UNIQUE KEY `codigo_producto` (`codigo_producto`);
 
 --
--- Indices de la tabla `tipos_contrato`
+-- Indexes for table `tipos_contrato`
 --
 ALTER TABLE `tipos_contrato`
   ADD PRIMARY KEY (`id_contrato`);
 
 --
--- Indices de la tabla `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
@@ -312,23 +318,29 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `user_email` (`user_email`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `pasillos`
+-- AUTO_INCREMENT for table `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `pasillos`
 --
 ALTER TABLE `pasillos`
   MODIFY `id_pasillo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT de la tabla `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tipos_contrato`
+-- AUTO_INCREMENT for table `tipos_contrato`
 --
 ALTER TABLE `tipos_contrato`
   MODIFY `id_contrato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;

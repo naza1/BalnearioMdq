@@ -1,5 +1,5 @@
 	<?php
-		if (isset($con))
+		if (isset($conn))
 		{
 	?>
 	<!-- Modal -->
@@ -33,7 +33,7 @@
 					<select class='form-control' name='mod_categoria' id='mod_categoria' required>
 						<option value="">Selecciona una categoría</option>
 							<?php 
-							$query_categoria=mysqli_query($con,"select * from categorias order by nombre_categoria");
+							$query_categoria=mysqli_query($conn,"select * from categorias order by nombre_categoria");
 							while($rw=mysqli_fetch_array($query_categoria))	{
 								?>
 							<option value="<?php echo $rw['id_categoria'];?>"><?php echo $rw['nombre_categoria'];?></option>			

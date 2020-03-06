@@ -26,17 +26,17 @@
 		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 		// escaping, additionally removing everything that could be (html/javascript-) code
-		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
-		$email=mysqli_real_escape_string($con,(strip_tags($_POST["email"],ENT_QUOTES)));
-    $dni=mysqli_real_escape_string($con,(strip_tags($_POST["dni"],ENT_QUOTES)));
+		$nombre=mysqli_real_escape_string($conn,(strip_tags($_POST["nombre"],ENT_QUOTES)));
+		$email=mysqli_real_escape_string($conn,(strip_tags($_POST["email"],ENT_QUOTES)));
+    $dni=mysqli_real_escape_string($conn,(strip_tags($_POST["dni"],ENT_QUOTES)));
     $id=intval($_POST['id']);
     
 		$sql="UPDATE clientes SET nombre='".$nombre."', email='".$email."', dni='".$dni."' WHERE id='".$id."'";
-		$query_update = mysqli_query($con,$sql);
+		$query_update = mysqli_query($conn,$sql);
 			if ($query_update){
 				$messages[] = "EL cliente ha sido actualizado satisfactoriamente.";
 			} else{
-				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
+				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($conn);
 			}
 		} else {
 			$errors []= "Error desconocido.";

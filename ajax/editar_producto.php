@@ -22,18 +22,18 @@
 		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 		// escaping, additionally removing everything that could be (html/javascript-) code
-		$codigo=mysqli_real_escape_string($con,(strip_tags($_POST["mod_codigo"],ENT_QUOTES)));
-		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["mod_nombre"],ENT_QUOTES)));
+		$codigo=mysqli_real_escape_string($conn,(strip_tags($_POST["mod_codigo"],ENT_QUOTES)));
+		$nombre=mysqli_real_escape_string($conn,(strip_tags($_POST["mod_nombre"],ENT_QUOTES)));
 		$categoria=intval($_POST['mod_categoria']);
 		$stock=intval($_POST['mod_stock']);
 		$precio_venta=floatval($_POST['mod_precio']);
 		$id_producto=$_POST['mod_id'];
 		$sql="UPDATE products SET codigo_producto='".$codigo."', nombre_producto='".$nombre."', id_categoria='".$categoria."', precio_producto='".$precio_venta."', stock='".$stock."' WHERE id_producto='".$id_producto."'";
-		$query_update = mysqli_query($con,$sql);
+		$query_update = mysqli_query($conn,$sql);
 			if ($query_update){
 				$messages[] = "Producto ha sido actualizado satisfactoriamente.";
 			} else{
-				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
+				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($conn);
 			}
 		} else {
 			$errors []= "Error desconocido.";

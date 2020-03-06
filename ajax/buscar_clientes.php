@@ -1,10 +1,4 @@
 <?php
-
-	/*-------------------------
-	Autor: Obed Alvarado
-	Web: obedalvarado.pw
-	Mail: info@obedalvarado.pw
-	---------------------------*/
 	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
 	/* Connect To Database*/
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
@@ -13,8 +7,8 @@
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	if($action == 'ajax'){
 		// escaping, additionally removing everything that could be (html/javascript-) code
-		 $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		 $cliente_id = mysqli_real_escape_string($con,(strip_tags($_REQUEST['cliente_id'], ENT_QUOTES)));
+		 $q = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
+		 $cliente_id = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['cliente_id'], ENT_QUOTES)));
 		 $aColumns = array('id');//Columnas de busqueda
 		 $sTable = "clientes";
 		 $sWhere = "";
@@ -49,14 +43,14 @@
 		$adjacents  = 4; //gap between pages after number of adjacents
 		$offset = ($page - 1) * $per_page;
 		//Count the total number of row in your table*/
-		$count_query = mysqli_query($con, "SELECT count(*) AS numrows FROM $sTable  $sWhere");
+		$count_query = mysqli_query($conn, "SELECT count(*) AS numrows FROM $sTable  $sWhere");
 		$row= mysqli_fetch_array($count_query	);
 		$numrows = $row['numrows'];
 		$total_pages = ceil($numrows/$per_page);
 		$reload = './clientes.php';
 		//main query to fetch the data
 		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
-		$query = mysqli_query($con, $sql);
+		$query = mysqli_query($conn, $sql);
 		//loop through fetched data
 		if ($numrows>0){
 			

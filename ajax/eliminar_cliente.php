@@ -9,7 +9,7 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
   if (isset($_GET['id']))
   {
     $id=intval($_GET['id']);
-    if ($delete1=mysqli_query($con,"DELETE FROM clientes WHERE id='".$id."'")){
+    if ($delete1=mysqli_query($conn,"DELETE FROM clientes WHERE id='".$id."'")){
 			?>
 			<div class="alert alert-success alert-dismissible" role="alert">
 			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

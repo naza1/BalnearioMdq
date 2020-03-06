@@ -1,9 +1,4 @@
 <?php
-	/*-------------------------
-	Autor: Alejandro Clerc
-	Web: www
-	Mail: alejandroclerc@gmail.com
-	---------------------------*/
 	session_start();
 	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: login.php");
@@ -59,7 +54,7 @@
 						<select class='form-control' name='id_pasillo' id='id_pasillo' onchange="load(1);">
 							<option value="">Seleccione un pasillo</option>
 							<?php 
-							$query_pasillo=mysqli_query($con,"select * from pasillos order by nombre_pasillo");
+							$query_pasillo=mysqli_query($conn,"select * from pasillos order by nombre_pasillo");
 							while($rw=mysqli_fetch_array($query_pasillo))	{
 								?>
 							<option value="<?php echo $rw['id_pasillo'];?>"><?php echo $rw['nombre_pasillo'];?></option>			

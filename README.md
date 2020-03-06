@@ -20,5 +20,3 @@ Instalación en windows (servidor local)
 6- Vista web: http://localhost/simple_stock/
 
 7- Datos de acceso por defecto: usuario: admin y contraseña: admin
-
-Para más información visita: http://obedalvarado.pw/blog/sistema-inventario-simple-php/

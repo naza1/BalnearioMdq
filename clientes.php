@@ -1,9 +1,4 @@
 <?php
-	/*-------------------------
-	Autor: Alejandro Clerc
-	Web: www
-	Mail: alejandroclerc@gmail.com
-	---------------------------*/
 	session_start();
 	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: login.php");
@@ -54,7 +49,7 @@
 						<select class='form-control' name='id_cliente' id='cliente_id' onchange="load(1);">
 							<option value="">Seleccione un cliente</option>
 							<?php 
-							$query_cliente=mysqli_query($con,"select * from clientes order by id");
+							$query_cliente=mysqli_query($conn,"select * from clientes order by id");
 							while($rw=mysqli_fetch_array($query_cliente))	{
 								?>
 							<option value="<?php echo $rw['id'];?>"><?php echo $rw['nombre'];?></option>
@@ -67,7 +62,7 @@
 					<div class='col-md-4'>
 						<label>TOTAL DE CLIENTES EN EL BALNEARIO</label>
 						<?php
-							$query_cliente1=mysqli_query($con,"select * from clientes");
+							$query_cliente1=mysqli_query($conn,"select * from clientes");
 						?>
 						<br><label><?php echo $query_cliente1->num_rows;?></label>
 					</div>

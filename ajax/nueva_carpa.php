@@ -26,8 +26,8 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 		include("../funciones.php");
 		// escaping, additionally removing everything that could be (html/javascript-) code
 		
-		$id_carpa=mysqli_real_escape_string($con,(strip_tags($_POST["id_carpa"],ENT_QUOTES)));
-		$numero_carpa=mysqli_real_escape_string($con,(strip_tags($_POST["numero_carpa"],ENT_QUOTES)));
+		$id_carpa=mysqli_real_escape_string($conn,(strip_tags($_POST["id_carpa"],ENT_QUOTES)));
+		$numero_carpa=mysqli_real_escape_string($conn,(strip_tags($_POST["numero_carpa"],ENT_QUOTES)));
 		$ocupacion_actual=intval($_POST['cupo']);
 		$id_pasillo=intval($_POST['pasillo']);
 		
@@ -35,7 +35,7 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 		
 		
 		$sql="INSERT INTO carpa (id_carpa, numero_carpa,tipo_contrato,nombre_pasillo,detalle_carpa,cochera_1,detalle_cochera1,cochera_2,detalle_cochera2,nombre_apellido_titular,ocupacion_actual date_added) VALUES ('$numerocarpa','$nombre','$date_added','$precio_venta', '$stock','$id_categoria')";
-		$query_new_insert = mysqli_query($con,$sql);
+		$query_new_insert = mysqli_query($conn,$sql);
 			if ($query_new_insert){
 				$messages[] = "La Carpa ha sido grabada satisfactoriamente.";
 				$id_producto=get_row('products','id_producto', 'codigo_producto', $codigo);
@@ -45,7 +45,7 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 				echo guardar_historial($id_producto,$user_id,$date_added,$nota,$codigo,$stock);
 				
 			} else{
-				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
+				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($conn);
 			}
 		} else {
 			$errors []= "Error desconocido.";

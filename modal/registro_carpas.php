@@ -1,5 +1,5 @@
 	<?php
-		if (isset($con))
+		if (isset($conn))
 		{
 	?>
 	<!-- Modal -->
@@ -27,7 +27,7 @@
 					<select class='form-control' name='pasillos' id='pasillos' required>
 						<option value="">Selecciona un Pasillo</option>
 							<?php 
-							$query_pasillo=mysqli_query($con,"select * from pasillos order by nombre_pasillo");
+							$query_pasillo=mysqli_query($conn,"select * from pasillos order by nombre_pasillo");
 							while($rw=mysqli_fetch_array($query_pasillo))	{
 								?>
 							<option value="<?php echo $rw['id_pasillo'];?>"><?php echo $rw['nombre_pasillo'];?></option>			
@@ -45,7 +45,7 @@
 					<select class='form-control' name='contrato' id='contrato' required>
 						<option value="">Selecciona un tipo de Contrato</option>
 							<?php 
-							$query_tipos_contrato=mysqli_query($con,"select * from tipos_contrato order by tipo_contrato");
+							$query_tipos_contrato=mysqli_query($conn,"select * from tipos_contrato order by tipo_contrato");
 							while($rw=mysqli_fetch_array($query_tipos_contrato))	{
 								?>
 							<option value="<?php echo $rw['id_contrato'];?>"><?php echo $rw['tipo_contrato'];?></option>			
@@ -72,7 +72,7 @@
 					<select class='form-control' name='cochera' id='cochera' required>
 						<option value="">Selecciona Nro de Cochera</option>
 							<?php 
-							$query_cocheras=mysqli_query($con,"select * from cocheras order by numero_cochera");
+							$query_cocheras=mysqli_query($conn,"select * from cocheras order by numero_cochera");
 							while($rw=mysqli_fetch_array($query_cocheras))	{
 								?>
 							<option value="<?php echo $rw['id_cochera'];?>"><?php echo $rw['numero_cochera'];?></option>			
@@ -98,7 +98,7 @@
 					<select class='form-control' name='cochera' id='cochera' required>
 						<option value="">Selecciona Nro de Cochera</option>
 							<?php 
-							$query_cocheras=mysqli_query($con,"select * from cocheras order by numero_cochera");
+							$query_cocheras=mysqli_query($conn,"select * from cocheras order by numero_cochera");
 							while($rw=mysqli_fetch_array($query_cocheras))	{
 								?>
 							<option value="<?php echo $rw['id_cochera'];?>"><?php echo $rw['numero_cochera'];?></option>			
@@ -124,7 +124,7 @@
 					<select class='form-control' name='cochera' id='cochera' required>
 						<option value="">Selecciona un Cliente</option>
 							<?php 
-							$query_clientes=mysqli_query($con,"select * from clientes order by cliente_nombreyapellido");
+							$query_clientes=mysqli_query($conn,"select * from clientes order by cliente_nombreyapellido");
 							while($rw=mysqli_fetch_array($query_clientes))	{
 								?>
 							<option value="<?php echo $rw['id_cliente'];?>"><?php echo $rw['cliente_nombreyapellido'];?></option>			
