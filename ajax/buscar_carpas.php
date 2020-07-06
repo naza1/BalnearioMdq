@@ -4,46 +4,13 @@
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 	
-	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
-	if (isset($_GET['id'])){
-		$id_pasillos=intval($_GET['id']);
-		$query=mysqli_query($conn, "select * from pasillos where id_pasillo='".$id_pasillo."'");
-		$count=mysqli_num_rows($query);
-		if ($count==0){
-			if ($delete1=mysqli_query($conn,"DELETE FROM pasillos WHERE id_pasillos='".$id_pasillos."'")){
-			?>
-			<div class="alert alert-success alert-dismissible" role="alert">
-			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			  <strong>Aviso!</strong> Datos eliminados exitosamente.
-			</div>
-			<?php 
-		}else {
-			?>
-			<div class="alert alert-danger alert-dismissible" role="alert">
-			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			  <strong>Error!</strong> Lo siento algo ha salido mal intenta nuevamente.
-			</div>
-			<?php
-			
-		}
-			
-		} else {
-			?>
-			<div class="alert alert-danger alert-dismissible" role="alert">
-			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			  <strong>Error!</strong> No se pudo eliminar ésta  categoría. Existen productos vinculados a ésta categoría. 
-			</div>
-			<?php
-		}
-		
-		
-		
-	}
+		$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	if($action == 'ajax'){
 		// escaping, additionally removing everything that could be (html/javascript-) code
-         $q = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		 $aColumns = array('id_pasillo');//Columnas de busqueda
-		 $sTable = "pasillos";
+		 $q = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
+		 $carpa_id = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['carpa_id'], ENT_QUOTES)));
+		 $aColumns = array('id_carpa');//Columnas de busqueda
+		 $sTable = "carpas";
 		 $sWhere = "";
 		if ( $_GET['q'] != "" )
 		{
@@ -54,8 +21,21 @@
 			}
 			$sWhere = substr_replace( $sWhere, "", -3 );
 			$sWhere .= ')';
+		} else
+		{
+			if ( $_GET['carpa_id'] != "" )
+			{
+				$sWhere = "WHERE (";
+			for ( $i=0 ; $i<count($aColumns) ; $i++ )
+			{
+				$sWhere .= $aColumns[$i]." LIKE '%".$carpa_id."%' OR ";
+			}
+			$sWhere = substr_replace( $sWhere, "", -3 );
+			$sWhere .= ')';
+			}
+
 		}
-		$sWhere.=" order by nombre_pasillo";
+		$sWhere.=" order by id_carpa";
 		include 'pagination.php'; //include pagination file
 		//pagination variables
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
@@ -63,44 +43,62 @@
 		$adjacents  = 4; //gap between pages after number of adjacents
 		$offset = ($page - 1) * $per_page;
 		//Count the total number of row in your table*/
-		$count_query   = mysqli_query($conn, "SELECT count(*) AS numrows FROM $sTable  $sWhere");
-		$row= mysqli_fetch_array($count_query);
+		$count_query = mysqli_query($conn, "SELECT count(*) AS numrows FROM $sTable  $sWhere");
+		$row= mysqli_fetch_array($count_query	);
 		$numrows = $row['numrows'];
 		$total_pages = ceil($numrows/$per_page);
-		$reload = './pasillos.php';
+		$reload = './principal.php';
 		//main query to fetch the data
 		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
 		$query = mysqli_query($conn, $sql);
 		//loop through fetched data
 		if ($numrows>0){
 			
+			
 			?>
 			<div class="table-responsive">
 			  <table class="table">
 				<tr  class="success">
-					<th>Nombre</th>
-					<th>Descripción</th>
-					<th>Agregado</th>
-					<th class='text-right'>Acciones</th>
+				
+					<th class='text-center'>Nro. Carpa</th>
+					<th class='text-center'>Pasillo</th>
+					<th class='text-center'>Detalle</th>
+					<th class='text-center'>Contrato</th>
+					<th class='text-center'>Estado</th>		
+					<th class='text-center'>Titular</th>												
+					<th class='text-center'>Ocup.Actual</th>
+					
+					<th class='text-center'>Acciones</th>
 					
 				</tr>
 				<?php
 				while ($row=mysqli_fetch_array($query)){
+						$id_carpa=$row['id_carpa'];
 						$id_pasillo=$row['id_pasillo'];
-						$nombre_pasillo=$row['nombre_pasillo'];
-						$descripcion_pasillo=$row['descripcion_pasillo'];
-						$date_added= date('d/m/Y', strtotime($row['date_added']));
+						$detalle_carpa=$row['detalle_carpa'];
+						$tipo_contrato=$row['tipo_contrato'];
+					    $tipo_estado=$row['tipo_estado'];
+						$id_cliente=$row['id_cliente'];				
+						$ocupacion_actual=$row['ocupacion_actual'];
+						
 						
 					?>
 					<tr>
 						
-						<td><?php echo $nombre_pasillo; ?></td>
-						<td ><?php echo $descripcion_pasillo; ?></td>
-						<td><?php echo $date_added;?></td>
+						<td class='text-center'><?php echo $id_carpa; ?></td>
+						<td class='text-center'><?php echo $id_pasillo; ?></td>
+						<td class='text-center'><?php echo $detalle_carpa; ?></td>
+						<td class='text-center'><?php echo $tipo_contrato; ?></td>
+						<td class='text-center'><?php echo $tipo_estado; ?></td>
+						<td class='text-center'><?php echo $id_cliente; ?></td>				
+						<td class='text-center'><?php echo $ocupacion_actual; ?></td>						
+					
 						
-					<td class='text-right'>
-						<a href="#" class='btn btn-default' title='Editar pasillo' data-nombre='<?php echo $nombre_pasillo;?>' data-descripcion='<?php echo $descripcion_pasillo?>' data-id='<?php echo $id_pasillo;?>' data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
-						<a href="#" class='btn btn-default' title='Borrar pasillo' onclick="eliminar('<?php echo $id_pasillo; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
+					<td class='text-center'>
+
+		
+					 <a href="#" class='btn btn-default' title='Editar Carpa' data-carpa='<?php echo $id_carpa;?>' data-pasillo='<?php echo $id_pasillo;?>' data-detalle='<?php echo $$detalle_carpa;?>'  data-contrato='<?php echo $tipo_contrato?>' data-estado='<?php echo $tipo_estado;?>' data-cliente='<?php echo $id_cliente;?>'  data-ocupacion='<?php echo $ocupacion_actual;?>'data-toggle="modal" data-target="#editCarpa"><i class="glyphicon glyphicon-edit"></i></a> 
+					<a href="#" class='btn btn-default' title='Borrar Carpa' onclick="eliminar('<?php echo $id_carpa; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
 					</td>
 						
 					</tr>
