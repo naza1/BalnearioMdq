@@ -48,6 +48,7 @@
 						<label>Filtrar por Cliente</label>
 						<select class='form-control' name='id_cliente' id='cliente_id' onchange="load(1);">
 							<option value="">Seleccione un cliente</option>
+							
 							<?php 
 							$query_cliente=mysqli_query($conn,"select * from clientes order by id");
 							while($rw=mysqli_fetch_array($query_cliente))	{

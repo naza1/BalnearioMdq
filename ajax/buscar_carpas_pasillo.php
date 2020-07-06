@@ -8,8 +8,8 @@
 	if($action == 'ajax'){
 		// escaping, additionally removing everything that could be (html/javascript-) code
 		 $q = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		 $carpa_id = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['carpa_id'], ENT_QUOTES)));
-		 $aColumns = array('id_carpa');//Columnas de busqueda
+		 $pasillo_id= mysqli_real_escape_string($conn,(strip_tags($_REQUEST['pasillo_id'], ENT_QUOTES)));
+		 $aColumns = array('id_pasillo');//Columnas de busqueda
 		 $sTable = "carpas";
 		 $sWhere = "";
 		if ( $_GET['q'] != "" )
@@ -23,19 +23,19 @@
 			$sWhere .= ')';
 		} else
 		{
-			if ( $_GET['carpa_id'] != "" )
+			if ( $_GET['pasillo_id'] != "" )
 			{
 				$sWhere = "WHERE (";
 			for ( $i=0 ; $i<count($aColumns) ; $i++ )
 			{
-				$sWhere .= $aColumns[$i]." LIKE '%".$carpa_id."%' OR ";
+				$sWhere .= $aColumns[$i]." LIKE '%".$pasillo_id."%' OR ";
 			}
 			$sWhere = substr_replace( $sWhere, "", -3 );
 			$sWhere .= ')';
 			}
 
 		}
-		$sWhere.=" order by id_carpa";
+		$sWhere.=" order by id_pasillo";
 		include 'pagination.php'; //include pagination file
 		//pagination variables
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
@@ -97,8 +97,8 @@
 					<td class='text-center'>
 
 		
-					 <a href="#" class='btn btn-default' title='Editar Carpa' data-carpa='<?php echo $id_carpa;?>' data-pasillo='<?php echo $id_pasillo;?>' data-detalle='<?php echo $$detalle_carpa;?>'  data-contrato='<?php echo $tipo_contrato?>' data-estado='<?php echo $tipo_estado;?>' data-cliente='<?php echo $id_cliente;?>'  data-ocupacion='<?php echo $ocupacion_actual;?>'data-toggle="modal" data-target="#editCarpa"><i class="glyphicon glyphicon-edit"></i></a> 
-					<a href="#" class='btn btn-default' title='Borrar Carpa' onclick="eliminar('<?php echo $id_carpa; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
+					 <a href="#" class='btn btn-default' title='Movimientos' data-carpa='<?php echo $id_carpa;?>' data-contrato='<?php echo $tipo_contrato?>' data-estado='<?php echo $tipo_estado;?>' data-cliente='<?php echo $id_cliente;?>'  data-ocupacion='<?php echo $ocupacion_actual;?>'data-toggle="modal" data-target="#editCarpa"><i class="glyphicon glyphicon-edit"></i></a> 
+					
 					</td>
 						
 					</tr>

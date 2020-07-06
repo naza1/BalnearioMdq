@@ -26,19 +26,18 @@
   </head>
   <body>
 	<?php
-	include("navbar.php");
+	include("navbarseguridad.php");
 	?>
 	
     <div class="container">
 	<div class="panel panel-success">
 		<div class="panel-heading">
-		    <div class="btn-group pull-right">
-				<button type='button' class="btn btn-success" data-toggle="modal" data-target="#nuevaCarpa"><span class="glyphicon glyphicon-plus" ></span> Agregar Carpa</button>
-			
-			</div>
-			<h4><i class='glyphicon glyphicon-home'></i> CARPAS</h4>
-			
-			
+								
+						<?php
+							$query_carpa1=mysqli_query($conn,"select * from carpas");
+						?> 
+						<br><h4><i class='glyphicon glyphicon-home'></i> TOTAL DE CARPAS <button type='button' class="btn btn-success" <label><?php echo $query_carpa1->num_rows;?></label> </button>	<h4>
+							
 		</div>
 		<div class="panel-body">
 		
@@ -58,21 +57,7 @@
 						<input type="text" class="form-control" id="q" placeholder="Ingrese Numero" onkeyup='load(1);'>
 					</div>
 					
-					<div class='col-md-2'>
-						<label>Filtrar x Carpa</label>
-						<select class='form-control' name='id_carpa' id='carpa_id' onchange="load(1);">
-							<option value="">Todas</option>
-							
-							<?php 
-							$query_cliente=mysqli_query($conn,"select * from carpas order by id_carpa");
-							while($rw=mysqli_fetch_array($query_cliente))	{
-								?>
-							<option value="<?php echo $rw['id_carpa'];?>"><?php echo $rw['id_carpa'];?></option>
-								<?php
-							}
-							?>
-						</select>
-					</div>
+			
 					<div class='col-md-2'>
 						<label>Numero de Pasillo</label>
 						
@@ -96,24 +81,7 @@
 						
 						
 					</div>
-					<div class='col-md-2'>
-						<label>TOTAL DE CARPAS</label>
-						<?php
-							$query_carpa1=mysqli_query($conn,"select * from carpas");
-						?>
-						<br><button type='button' class="btn btn-success" <label><?php echo $query_carpa1->num_rows;?></label> </button>
-						
-						
-					</div>
-					<div class='col-md-2'>
-						<label>CANT. PERSONAS</label>
-						<?php
-							$query_carpa1=mysqli_query($conn,"select * from carpas");
-						?>
-						<br><button type='button' class="btn btn-success" <label><?php echo $query_carpa1->num_rows;?></label> </button>
-						
-						
-					</div>
+					
 					
 						
 					</div>

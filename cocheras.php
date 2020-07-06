@@ -37,27 +37,27 @@
 			
 			
 			<?php
-			include("modal/registro_carpas.php");
-			include("modal/editar_carpas.php");
+			include("modal/registro_cocheras.php");
+			include("modal/editar_cocheras.php");
 			?>
 			<form class="form-horizontal" role="form" id="datos">
 				
 						
 				<div class="row">
 					<div class='col-md-4'>
-						<label>Filtrar por Nro. de Carpa</label>
+						<label>Filtrar por Nro. de Cochera</label>
 						<input type="text" class="form-control" id="q" placeholder="Ingrese Numero" onkeyup='load(1);'>
 					</div>
 					
 					<div class='col-md-4'>
-						<label>Filtrar por Pasillo</label>
-						<select class='form-control' name='id_pasillo' id='id_pasillo' onchange="load(1);">
-							<option value="">Seleccione un pasillo</option>
+						<label>Filtrar por Cochera</label>
+						<select class='form-control' name='id_cocheras' id='id_cocheras' onchange="load(1);">
+							<option value="">Seleccione una Cochera</option>
 							<?php 
-							$query_pasillo=mysqli_query($conn,"select * from pasillos order by nombre_pasillo");
-							while($rw=mysqli_fetch_array($query_pasillo))	{
+							$query_cochera=mysqli_query($conn,"select * from cocheras order by id_cocheras");
+							while($rw=mysqli_fetch_array($query_cochera))	{
 								?>
-							<option value="<?php echo $rw['id_pasillo'];?>"><?php echo $rw['nombre_pasillo'];?></option>			
+							<option value="<?php echo $rw['id_cocheras'];?>"><?php echo $rw['id_cocheras'];?></option>			
 								<?php
 							}
 							?>
@@ -65,8 +65,11 @@
 						
 					</div>
 					<div class='col-md-4'>
-						<label>TOTAL DE OCUPANTES EN EL BALNEARIO</label>
-						
+						<label class='text-center'> TOTAL DE COCHERAS</label>
+						<?php
+							$query_cochera1=mysqli_query($conn,"select * from cocheras");
+						?>
+						<br><button type='button' class="btn btn-success" <label class='text-center'><?php echo $query_cochera1->num_rows;?></label> </button>
 						
 					</div>
 					<div class='col-md-12 text-center'>
@@ -99,7 +102,7 @@
 	<?php
 	include("footer.php");
 	?>
-	<script type="text/javascript" src="js/carpas.js"></script>
+	<script type="text/javascript" src="js/cocheras.js"></script>
   </body>
 </html>
 <script>
@@ -108,7 +111,7 @@ function eliminar (id){
 		var id_pasillo= $("#id_pasillo").val();
 		$.ajax({
 			type: "GET",
-			url: "./ajax/buscar_carpas.php",
+			url: "./ajax/buscar_cocheras.php",
 			data: "id="+id,"q":q+"id_pasillo="+id_pasillo,
 			 beforeSend: function(objeto){
 				$("#resultados").html("Mensaje: Cargando...");

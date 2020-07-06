@@ -24,6 +24,8 @@ function load(page){
 
 
 
+
+
 $( "#add_carpa" ).submit(function( event ) {
   $('#add_carpa').attr("disabled", true);
   
@@ -48,7 +50,7 @@ $( "#add_carpa" ).submit(function( event ) {
 function eliminar(id)
 {
   var q= $("#q").val();
-  if (confirm("Realmente deseas eliminar la Carpa ?")){	
+  if (confirm("Realmente deseas eliminar el cliente ?")){	
     $.ajax({
       type: "GET",
       url: "./ajax/eliminar_carpa.php",
@@ -64,46 +66,31 @@ function eliminar(id)
   }
 }
 
-$('#editCarpa').on('show.bs.modal', function (event) {
+$('#editClient').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
-  var ocupacion_actual = button.data('ocupacion_actual') 
-  var id_cliente = button.data('id_cliente') 
-  var tipo_estado = button.data('tipo_estado') 
-  var tipo_contrato = button.data('tipo_contrato') 
-  var detalle_carpa = button.data('detalle_carpa') 
-  var id_pasillo = button.data('id_pasillo') 
-  var id_carpa= button.data('id_carpa') 
+  var nombre = button.data('nombre') 
+  var dni = button.data('dni') 
+  var email = button.data('email') 
+  var id = button.data('id') 
   var modal = $(this)
-  
-  
- 
-  modal.find('.modal-body #ocupacion_actual').val(ocupacion_actual) 
-  modal.find('.modal-body #id_cliente').val(id_cliente)
-  modal.find('.modal-body #tipo_estado').val(tipo_estado)
-  modal.find('.modal-body #tipo_contrato').val(tipo_contrato)
-  modal.find('.modal-body #detalle_carpa').val(detalle_carpa) 
-  modal.find('.modal-body #id_pasillo').val(id_pasillo)
-  modal.find('.modal-body #id_carpa').val(id_carpa)
+  modal.find('.modal-body #nombre').val(nombre)
+  modal.find('.modal-body #dni').val(dni) 
+  modal.find('.modal-body #email').val(email)
+  modal.find('.modal-body #id').val(id)
 })
 
-
-
-
-
-			
-
-$("#editar_carpas").submit(function(event) {
+$("#editar_cliente").submit(function(event) {
   $('#actualizar_datos').attr("disabled", true);
   var parametros = $(this).serialize();
 	$.ajax({
     type: "POST",
-		url: "ajax/editar_carpas.php",
+		url: "ajax/editar_cliente.php",
 		data: parametros,
 		beforeSend: function(objeto){
 			$("#resultados").html("Mensaje: Cargando...");
 		},
 		success: function(datos){
-      $('#editCarpa').modal('hide');
+      $('#editClient').modal('hide');
 			$('#actualizar_datos').attr("disabled", false);
       load(1);
       $("#resultados").html(datos);
@@ -111,4 +98,8 @@ $("#editar_carpas").submit(function(event) {
 	});
   event.preventDefault();
 })
+
+		
+		
+		
 

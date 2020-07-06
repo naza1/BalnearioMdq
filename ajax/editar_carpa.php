@@ -1,6 +1,5 @@
 <?php
-include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
-		
+	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
 	/*Inicia validacion del lado del servidor*/
   if (empty($_POST['id_carpa'])) 
   {
@@ -35,6 +34,9 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
     $errors[] = "Titular Vacio vacío";
   }
   
+  
+  
+  
   else if (!empty($_POST['id_carpa']) && 
   !empty($_POST['numero_carpa']) &&
   !empty($_POST['tipo_contrato']) &&
@@ -45,31 +47,23 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
   !empty($_POST['id_cliente']))
   
   {
-  
 		/* Connect To Database*/
 		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
-		include("../funciones.php");
 		// escaping, additionally removing everything that could be (html/javascript-) code
-		
-			// escaping, additionally removing everything that could be (html/javascript-) code
 		$id_cliente=mysqli_real_escape_string($conn,(strip_tags($_POST["id_cliente"],ENT_QUOTES)));
 		$id_pasillo=mysqli_real_escape_string($conn,(strip_tags($_POST["id_pasillo"],ENT_QUOTES)));
-        $ocupacion_actual=mysqli_real_escape_string($conn,(strip_tags($_POST["ocupacion_actual"],ENT_QUOTES)));
-    	$tipo_estado=mysqli_real_escape_string($conn,(strip_tags($_POST["tipo_estado"],ENT_QUOTES)));
+    $ocupacion_actual=mysqli_real_escape_string($conn,(strip_tags($_POST["ocupacion_actual"],ENT_QUOTES)));
+    		$tipo_estado=mysqli_real_escape_string($conn,(strip_tags($_POST["tipo_estado"],ENT_QUOTES)));
 		$detalle_carpa=mysqli_real_escape_string($conn,(strip_tags($_POST["detalle_carpa"],ENT_QUOTES)));
-        $tipo_contrato=mysqli_real_escape_string($conn,(strip_tags($_POST["tipo_contrato"],ENT_QUOTES)));
-        $numero_carpa=mysqli_real_escape_string($conn,(strip_tags($_POST["numero_carpa"],ENT_QUOTES)));
-		
-		$date_added=date("Y-m-d H:i:s");
-		
-		
-		$$sql="INSERT INTO carpas (numero_carpa,tipo_contrato,detalle_carpa,tipo_estado,ocupacion_actual,id_pasillo,id_client, date_added) 
-		VALUES (' $numero_carpa','$tipo_contrato','$detalle_carpa','$tipo_estado', ' $ocupacion_actual','$id_pasillo','$id_cliente', '$date_added')";
-		$query_new_insert = mysqli_query($conn,$sql);
-			if ($query_new_insert){
-				$messages[] = "La Carpa ha sido agregada satisfactoriamente.";
-				
+    $tipo_contrato=mysqli_real_escape_string($conn,(strip_tags($_POST["tipo_contrato"],ENT_QUOTES)));
+    $numero_carpa=mysqli_real_escape_string($conn,(strip_tags($_POST["numero_carpa"],ENT_QUOTES)));
+    $id_carpa=intval($_POST['id_carpa']);
+    
+		$sql="UPDATE carpas SET id_cliente='".$id_cliente."', id_pasillo='".$id_pasillo."', ocupacion_actual='".$ocupacion_actual."' , tipo_estado='".$tipo_estado."', detalle_carpa='".$detalle_carpa."', tipo_contrato='".$tipo_contrato."', numero_carpa='".$numero_carpa."'WHERE id_carpa='".$id_carpa."'";
+		$query_update = mysqli_query($conn,$sql);
+			if ($query_update){
+				$messages[] = "La Carpa ha sido actualizada satisfactoriamente.";
 			} else{
 				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($conn);
 			}
