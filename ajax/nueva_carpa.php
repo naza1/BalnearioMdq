@@ -2,47 +2,73 @@
 include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
 		
 	/*Inicia validacion del lado del servidor*/
-	if (empty($_POST['nombre'])) 
-	{
-		$errors[] = "Nombre vacío";
-	} 
-	else if (empty($_POST['numerocarpa']))
-	{
-			$errors[] = "Numero de carpa vacío";
-	} 
-	else if ($_POST['cupo']=="")
-	{
-			$errors[] = "Cupo de la Carpa vacío";
-	}
-	else if (empty($_POST['precio']))
-	{
-			$errors[] = "Precio de venta vacío";
-	} 
-	else if (!empty($_POST['codigo']) && !empty($_POST['nombre']) && $_POST['stock']!="" && !empty($_POST['precio']))
-	{ 
+  if (empty($_POST['id_carpa'])) 
+  {
+    $errors[] = "Id Carpa Vacio";
+  }
+  else if (empty($_POST['numero_carpa']))
+  {
+    $errors[] = "Numero de Carpa Vacío";
+  }
+  else if (empty($_POST['tipo_contrato']))
+  {
+    $errors[] = "Tipo de Contrato Vacío";
+  }
+  else if (empty($_POST['detalle_carpa']))
+  {
+    $errors[] = "Detalle de Carpa vacío";
+  }
+  else if (empty($_POST['tipo_estado']))
+  {
+    $errors[] = "Tipo de Estado vacío";
+  }
+  else if (empty($_POST['ocupacion_actual']))
+  {
+    $errors[] = "Ocupacion Actual vacío";
+  }
+  else if (empty($_POST['id_pasillo']))
+  {
+    $errors[] = "Nro. de Pasillo Vacío";
+  }
+  else if (empty($_POST['id_cliente']))
+  {
+    $errors[] = "Titular Vacio vacío";
+  }
+  
+  else if (!empty($_POST['id_carpa']) && 
+  !empty($_POST['numero_carpa']) &&
+  !empty($_POST['tipo_contrato']) &&
+  !empty($_POST['detalle_carpa'])) &&
+  !empty($_POST['tipo_estado'])) &&
+  !empty($_POST['ocupacion_actual'])) &&
+  !empty($_POST['id_pasillo'])) &&
+  !empty($_POST['id_cliente']))
+  
+  {
+  
 		/* Connect To Database*/
 		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 		include("../funciones.php");
 		// escaping, additionally removing everything that could be (html/javascript-) code
 		
-		$id_carpa=mysqli_real_escape_string($conn,(strip_tags($_POST["id_carpa"],ENT_QUOTES)));
-		$numero_carpa=mysqli_real_escape_string($conn,(strip_tags($_POST["numero_carpa"],ENT_QUOTES)));
-		$ocupacion_actual=intval($_POST['cupo']);
-		$id_pasillo=intval($_POST['pasillo']);
+			// escaping, additionally removing everything that could be (html/javascript-) code
+		$id_cliente=mysqli_real_escape_string($conn,(strip_tags($_POST["id_cliente"],ENT_QUOTES)));
+		$id_pasillo=mysqli_real_escape_string($conn,(strip_tags($_POST["id_pasillo"],ENT_QUOTES)));
+        $ocupacion_actual=mysqli_real_escape_string($conn,(strip_tags($_POST["ocupacion_actual"],ENT_QUOTES)));
+    	$tipo_estado=mysqli_real_escape_string($conn,(strip_tags($_POST["tipo_estado"],ENT_QUOTES)));
+		$detalle_carpa=mysqli_real_escape_string($conn,(strip_tags($_POST["detalle_carpa"],ENT_QUOTES)));
+        $tipo_contrato=mysqli_real_escape_string($conn,(strip_tags($_POST["tipo_contrato"],ENT_QUOTES)));
+        $numero_carpa=mysqli_real_escape_string($conn,(strip_tags($_POST["numero_carpa"],ENT_QUOTES)));
 		
 		$date_added=date("Y-m-d H:i:s");
 		
 		
-		$sql="INSERT INTO carpa (id_carpa, numero_carpa,tipo_contrato,nombre_pasillo,detalle_carpa,cochera_1,detalle_cochera1,cochera_2,detalle_cochera2,nombre_apellido_titular,ocupacion_actual date_added) VALUES ('$numerocarpa','$nombre','$date_added','$precio_venta', '$stock','$id_categoria')";
+		$$sql="INSERT INTO carpas (numero_carpa,tipo_contrato,detalle_carpa,tipo_estado,ocupacion_actual,id_pasillo,id_client, date_added) 
+		VALUES (' $numero_carpa','$tipo_contrato','$detalle_carpa','$tipo_estado', ' $ocupacion_actual','$id_pasillo','$id_cliente', '$date_added')";
 		$query_new_insert = mysqli_query($conn,$sql);
 			if ($query_new_insert){
-				$messages[] = "La Carpa ha sido grabada satisfactoriamente.";
-				$id_producto=get_row('products','id_producto', 'codigo_producto', $codigo);
-				$user_id=$_SESSION['user_id'];
-				$firstname=$_SESSION['firstname'];
-				$nota="$firstname agregó $stock producto(s) al inventario";
-				echo guardar_historial($id_producto,$user_id,$date_added,$nota,$codigo,$stock);
+				$messages[] = "La Carpa ha sido agregada satisfactoriamente.";
 				
 			} else{
 				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($conn);
