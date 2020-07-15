@@ -9,8 +9,7 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h4 class="modal-title">Agregar Cliente</h4>
       </div>
-      <div class="modal-body">
-        
+        <div class="modal-body">
           <div class="form-group">
             <label for="name" class="col-sm-3 control-label" >Nombre Apellido</label>
             <div class="col-sm-6">
@@ -44,63 +43,60 @@
           <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Email</label>
             <div class="col-sm-6">
-              <input type="text" name="email" class="form-control" id="email" value="" placeholder="Email" required="">
+              <input type="email" name="email" class="form-control" id="email" value="" placeholder="Email" required="">
             </div>
           </div>
           <div class="form-group">
-				<label for="contrato" class="col-sm-3 control-label">Nro. de Carpa</label>
-				<div class="col-sm-6">
-					
-						<select class='form-control' name='id_carpa' id='carpa_id' onchange="load(1);">
-							<option value="">Selecciona</option>
-							
-							<?php 
-							$query_cliente=mysqli_query($conn,"select * from carpas order by id_carpa");
-							while($rw=mysqli_fetch_array($query_cliente))	{
-								?>
-							<option value="<?php echo $rw['id_carpa'];?>"><?php echo $rw['id_carpa'];?></option>
-								<?php
-							}
-							?>
-						</select>
-							  
-				</div>
+            <label for="email_alternativo" class="col-sm-3 control-label">Email alternativo</label>
+            <div class="col-sm-6">
+              <input type="email" name="email_alternativo" class="form-control" id="email_alternativo" value="" placeholder="Email">
+            </div>
           </div>
-         
-         
-         
-            <div class="form-group">
-				<label for="contrato" class="col-sm-3 control-label">Contrato</label>
-				<div class="col-sm-6">
-					<select class='form-control' name='id_contrato' id='contrato_id' onchange="load(1);">
-						<option value="">Selecciona</option>
-							<?php 
-							$query_contrato=mysqli_query($con,"select * from tipos_contrato order by id_contrato");
-							while($rw=mysqli_fetch_array($query_contrato))	{
-								?>
-							<option value="<?php echo $rw['id_contrato'];?>"><?php echo $rw['id_contrato'];?></option>			
-								<?php
-							}
-							?>
-					</select>			  
-				</div>
+          <div class="form-group">
+            <label for="nroCarpa" class="col-sm-3 control-label">Nro. de Carpa</label>
+            <div class="col-sm-6">
+              <select class='form-control' name='id_carpa' id='id_carpa' required="" onchange="load(1);">
+                <option value="">Selecciona</option>
+							  <?php
+							    $query_cliente = mysqli_query($conn,"select * from carpas order by id_carpa");
+							    while($rw=mysqli_fetch_array($query_cliente))	{
+							  ?>
+							  <option value="<?php echo $rw['id_carpa'];?>"><?php echo $rw['id_carpa'];?></option>
+							  <?php
+							  }
+							  ?>
+						  </select>
+				    </div>
           </div>
-           <div class="form-group">
-				<label for="nombre" class="col-sm-3 control-label">Patentes</label>
-				<div class="col-sm-8">
-					<textarea class="form-control" id="pagos" name="pago" placeholder="NRO DE PATENTE / VEHICULO" required maxlength="255" ></textarea>
-				  
-				</div>
-			  </div>
-            <div class="form-group">
-				<label for="nombre" class="col-sm-3 control-label">Pagos</label>
-				<div class="col-sm-8">
-					<textarea class="form-control" id="pagos" name="pago" placeholder="FECHA / IMPORTE / MEDIO DE PAGO" required maxlength="355" ></textarea>
-				  
-				</div>
-			  </div>
-          
-      </div>
+          <div class="form-group">
+				    <label for="contrato" class="col-sm-3 control-label">Contrato</label>
+				    <div class="col-sm-6">
+					    <select class='form-control' name='id_contrato' id='id_contrato' required="" onchange="load(1);">
+						    <option value="">Selecciona</option>
+							    <?php 
+							      $query_contrato = mysqli_query($conn,"select * from tipos_contrato order by id_contrato");
+							      while($rw=mysqli_fetch_array($query_contrato))	{
+								  ?>
+							  <option value="<?php echo $rw['id_contrato'];?>"><?php echo $rw['id_contrato'];?></option>			
+								  <?php
+							    }
+							    ?>
+					    </select>
+				    </div>
+          </div>
+          <div class="form-group">
+				    <label for="nombre" class="col-sm-3 control-label">Patentes</label>
+				    <div class="col-sm-8">
+					    <textarea class="form-control" id="patente" name="patente" placeholder="NRO DE PATENTE / VEHICULO" required maxlength="255" ></textarea>
+				    </div>
+			    </div>
+          <div class="form-group">
+				    <label for="nombre" class="col-sm-3 control-label">Pagos</label>
+				    <div class="col-sm-8">
+					    <textarea class="form-control" id="pago" name="pago" placeholder="FECHA / IMPORTE / MEDIO DE PAGO" required maxlength="355" ></textarea>
+				    </div>
+			    </div>
+        </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 		    <button type="submit" class="btn btn-primary">Guardar</button>

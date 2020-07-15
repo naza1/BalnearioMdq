@@ -15,7 +15,7 @@
 	$title="C.B. | BALNEARIO PRINCESA";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <?php include("head.php");?>
   </head>
@@ -43,17 +43,15 @@
 						<label>Filtrar por Nro. de Cliente</label>
 						<input type="text" class="form-control" id="q" placeholder="Ingrese Numero" onkeyup='load(1);'>
 					</div>
-					
 					<div class='col-md-4'>
 						<label>Filtrar por Cliente</label>
-						<select class='form-control' name='id_cliente' id='cliente_id' onchange="load(1);">
+						<select class='form-control' name='cliente_id' id='cliente_id' onchange="load(1);">
 							<option value="">Seleccione un cliente</option>
-							
 							<?php 
-							$query_cliente=mysqli_query($conn,"select * from clientes order by id");
+							$query_cliente=mysqli_query($conn,"select * from clientes order by Id");
 							while($rw=mysqli_fetch_array($query_cliente))	{
 								?>
-							<option value="<?php echo $rw['id'];?>"><?php echo $rw['nombre'];?></option>
+							<option value="<?php echo $rw['Id'];?>"><?php echo $rw['Nombre'];?></option>
 								<?php
 							}
 							?>
