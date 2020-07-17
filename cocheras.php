@@ -33,12 +33,7 @@
 			<h4><i class='glyphicon glyphicon-search'></i> COCHERAS</h4>
 		</div>
 		<div class="panel-body">
-		
-			
-			
 			<?php
-			include("modal/registro_cocheras.php");
-			include("modal/editar_cocheras.php");
 			?>
 			<form class="form-horizontal" role="form" id="datos">
 				
@@ -87,13 +82,6 @@
 					
 				</div>
 			</form>
-				
-			
-		
-	
-			
-			
-			
   </div>
 </div>
 		 

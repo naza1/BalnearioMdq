@@ -33,6 +33,74 @@
 				        <textarea class="form-control" id="email" name="email" ></textarea>
 				      </div>
 			      </div>
+						<div class="form-group">
+				      <label for="email_alternativo" class="col-sm-3 control-label">Email alternativo</label>
+				      <div class="col-sm-8">
+				        <textarea class="form-control" id="email_alternativo" name="email_alternativo" ></textarea>
+				      </div>
+			      </div>
+						<div class="form-group">
+				      <label for="domicilio" class="col-sm-3 control-label">Domicilio</label>
+				      <div class="col-sm-8">
+				        <textarea class="form-control" id="domicilio" name="domicilio" ></textarea>
+				      </div>
+			      </div>
+						<div class="form-group">
+				      <label for="localidad" class="col-sm-3 control-label">Localidad</label>
+				      <div class="col-sm-8">
+				        <textarea class="form-control" id="localidad" name="localidad" ></textarea>
+				      </div>
+			      </div>
+						<div class="form-group">
+				      <label for="telefono" class="col-sm-3 control-label">Teléfono</label>
+				      <div class="col-sm-8">
+				        <textarea class="form-control" id="telefono" name="telefono"></textarea>
+				      </div>
+			      </div>
+						<div class="form-group">
+				      <label for="patente" class="col-sm-3 control-label">Patente</label>
+				      <div class="col-sm-8">
+				        <textarea class="form-control" id="patente" name="patente" ></textarea>
+				      </div>
+			      </div>
+						<div class="form-group">
+				      <label for="pago" class="col-sm-3 control-label">Pago</label>
+				      <div class="col-sm-8">
+				        <textarea class="form-control" id="pago" name="pago" ></textarea>
+				      </div>
+			      </div>
+						<div class="form-group">
+            	<label for="nroCarpa" class="col-sm-3 control-label">Nro. de Carpa</label>
+            	<div class="col-sm-6">
+              	<select class='form-control' name='carpa' id='carpa' required="" onchange="load(1);">
+									<option selected="selected" value=""></option>
+							  	<?php
+							    	$query_cliente = mysqli_query($conn,"select * from carpas order by id_carpa");
+							    	while($rw=mysqli_fetch_array($query_cliente))	{
+							  	?>
+							  	<option value="<?php echo $rw['id_carpa'];?>"><?php echo $rw['id_carpa'];?></option>
+							  	<?php
+							  	}
+							  	?>
+						  	</select>
+				    	</div>
+          	</div>
+						<div class="form-group">
+				    <label for="contrato" class="col-sm-3 control-label">Contrato</label>
+				    <div class="col-sm-6">
+					    <select class='form-control' name='contrato' id='contrato' required="" onchange="load(1);">
+						    <option selected="selected" value=""></option>
+							    <?php 
+							      $query_contrato = mysqli_query($conn,"select * from tipos_contrato order by id_contrato");
+							      while($rw=mysqli_fetch_array($query_contrato))	{
+								  ?>
+							  <option value="<?php echo $rw['id_contrato'];?>"><?php echo $rw['id_contrato'];?></option>			
+								  <?php
+							    }
+							    ?>
+					    </select>
+				    </div>
+          </div>
 		        <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 			        <button type="submit" class="btn btn-primary" id="actualizar_datos">Actualizar datos</button>

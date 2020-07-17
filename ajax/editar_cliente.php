@@ -26,12 +26,32 @@
 		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 		// escaping, additionally removing everything that could be (html/javascript-) code
-		$nombre=mysqli_real_escape_string($conn,(strip_tags($_POST["nombre"],ENT_QUOTES)));
-		$email=mysqli_real_escape_string($conn,(strip_tags($_POST["email"],ENT_QUOTES)));
-    $dni=mysqli_real_escape_string($conn,(strip_tags($_POST["dni"],ENT_QUOTES)));
-    $id=intval($_POST['id']);
+		$nombre = mysqli_real_escape_string($conn,(strip_tags($_POST["nombre"],ENT_QUOTES)));
+		$email = mysqli_real_escape_string($conn,(strip_tags($_POST["email"],ENT_QUOTES)));
+    $dni = mysqli_real_escape_string($conn,(strip_tags($_POST["dni"],ENT_QUOTES)));
+		$id = intval($_POST['id']);
+		$domicilio = mysqli_real_escape_string($conn,(strip_tags($_POST["domicilio"],ENT_QUOTES)));
+		$localidad = mysqli_real_escape_string($conn,(strip_tags($_POST["localidad"],ENT_QUOTES)));
+		$emailAlternativo = mysqli_real_escape_string($conn,(strip_tags($_POST["email_alternativo"],ENT_QUOTES)));
+		$telefono = mysqli_real_escape_string($conn,(strip_tags($_POST["telefono"],ENT_QUOTES)));
+		$patente = mysqli_real_escape_string($conn,(strip_tags($_POST["patente"],ENT_QUOTES)));
+		$pago = mysqli_real_escape_string($conn,(strip_tags($_POST["pago"],ENT_QUOTES)));
+		$carpa = mysqli_real_escape_string($conn,(strip_tags($_POST["carpa"],ENT_QUOTES)));
+		$contrato = mysqli_real_escape_string($conn,(strip_tags($_POST["contrato"],ENT_QUOTES)));
     
-		$sql="UPDATE clientes SET nombre='".$nombre."', email='".$email."', dni='".$dni."' WHERE id='".$id."'";
+		$sql = "UPDATE clientes SET Nombre='".$nombre."', 
+		Email='".$email."', 
+		Email_Alternativo='".$emailAlternativo."', 
+		Dni='".$dni."', 
+		Domicilio='".$domicilio."',
+		Localidad='".$localidad."',
+		Telefono='".$telefono."',
+		PatenteAuto='".$patente."',
+		Pago='".$pago."',
+		IdCarpa='".$carpa."',
+		Contrato='".$contrato."'
+		WHERE Id='".$id."'";
+
 		$query_update = mysqli_query($conn,$sql);
 			if ($query_update){
 				$messages[] = "EL cliente ha sido actualizado satisfactoriamente.";

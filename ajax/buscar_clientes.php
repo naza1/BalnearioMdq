@@ -67,12 +67,20 @@
 					
 				</tr>
 				<?php
-				while ($row=mysqli_fetch_array($query)){
-						$id=$row['id'];
-						$nombre=$row['nombre'];
-            $dni=$row['dni'];
-            $email=$row['email'];
-						$date_added= date('d/m/Y', strtotime($row['date_added']));
+				while ($row = mysqli_fetch_array($query)){
+						$id = $row['Id'];
+						$nombre = $row['Nombre'];
+            $dni = $row['Dni'];
+						$email = $row['Email'];
+						$domicilio = $row['Domicilio'];
+						$localidad = $row['Localidad'];
+						$telefono = $row['Telefono'];
+						$email_alternativo = $row['Email_Alternativo'];
+						$patente = $row['PatenteAuto'];
+						$pago = $row['Pago'];
+						$idCarpa = $row['IdCarpa'];
+						$contrato = $row['Contrato'];
+						$date_added = date('d/m/Y', strtotime($row['CreatedAt']));
 						
 					?>
 					<tr>
@@ -83,7 +91,21 @@
 						<td><?php echo $date_added;?></td>
 						
 					<td class='text-right'>
-						<a href="#" class='btn btn-default' title='Editar cliente' data-nombre='<?php echo $nombre;?>' data-dni='<?php echo $dni?>' data-id='<?php echo $id;?>' data-email='<?php echo $email;?>' data-toggle="modal" data-target="#editClient"><i class="glyphicon glyphicon-edit"></i></a> 
+						<a href="#" class='btn btn-default' title='Editar cliente' 
+						data-domicilio = '<?php echo $domicilio;?>' 
+						data-nombre = '<?php echo $nombre;?>' 
+						data-dni = '<?php echo $dni?>' 
+						data-id = '<?php echo $id;?>' 
+						data-localidad = '<?php echo $localidad;?>' 
+						data-telefono = '<?php echo $telefono;?>' 
+						data-email = '<?php echo $email;?>' 
+						data-email_alternativo = '<?php echo $email_alternativo;?>' 
+						data-patente = '<?php echo $patente;?>' 
+						data-pago = '<?php echo $pago;?>' 
+						data-carpa = '<?php echo $idCarpa;?>' 
+						data-contrato = '<?php echo $contrato;?>' 
+						data-toggle = "modal" 
+						data-target = "#editClient"><i class="glyphicon glyphicon-edit"></i></a> 
 						<a href="#" class='btn btn-default' title='Borrar cliente' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
 					</td>
 						
