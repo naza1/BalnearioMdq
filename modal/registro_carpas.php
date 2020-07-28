@@ -121,13 +121,13 @@
 			 <div class="form-group">
 				<label for="cochera" class="col-sm-3 control-label">Titular</label>
 				<div class="col-sm-8">
-					<select class='form-control' name='cochera' id='cochera' required>
+					<select class="form-control" name="titular" id="titular" required>
 						<option value="">Selecciona un Cliente</option>
 							<?php 
-							$query_clientes=mysqli_query($conn,"select * from clientes order by cliente_nombreyapellido");
+							$query_clientes=mysqli_query($conn,"select * from clientes order by _nombre");
 							while($rw=mysqli_fetch_array($query_clientes))	{
 								?>
-							<option value="<?php echo $rw['id_cliente'];?>"><?php echo $rw['cliente_nombreyapellido'];?></option>			
+							<option value="<?php echo $rw['Id'];?>"><?php echo $rw['_nombre'];?></option>			
 								<?php
 							}
 							?>

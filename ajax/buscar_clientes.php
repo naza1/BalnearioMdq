@@ -69,18 +69,18 @@
 				<?php
 				while ($row = mysqli_fetch_array($query)){
 						$id = $row['Id'];
-						$nombre = $row['Nombre'];
-            $dni = $row['Dni'];
-						$email = $row['Email'];
-						$domicilio = $row['Domicilio'];
-						$localidad = $row['Localidad'];
-						$telefono = $row['Telefono'];
-						$email_alternativo = $row['Email_Alternativo'];
-						$patente = $row['PatenteAuto'];
-						$pago = $row['Pago'];
-						$idCarpa = $row['IdCarpa'];
-						$contrato = $row['Contrato'];
-						$date_added = date('d/m/Y', strtotime($row['CreatedAt']));
+						$nombre = $row['_nombre'];
+            $dni = $row['_dni'];
+						$email = $row['_email'];
+						$domicilio = $row['_domicilio'];
+						$localidad = $row['_localidad'];
+						$telefono = $row['_telefono'];
+						$email_alternativo = $row['_email__alternativo'];
+						$patente = $row['_patente_auto'];
+						$pago = $row['_pago'];
+						$idCarpa = $row['_id_carpa'];
+						$contrato = $row['_contrato'];
+						$date_added = date('d/m/Y', strtotime($row['_created_at']));
 						
 					?>
 					<tr>

@@ -75,16 +75,48 @@
               	<select class='form-control' name='carpa' id='carpa' required="" onchange="load(1);">
 									<option selected="selected" value=""></option>
 							  	<?php
-							    	$query_cliente = mysqli_query($conn,"select * from carpas order by id_carpa");
+							    	$query_cliente = mysqli_query($conn,"select * from carpas order by Id");
 							    	while($rw=mysqli_fetch_array($query_cliente))	{
 							  	?>
-							  	<option value="<?php echo $rw['id_carpa'];?>"><?php echo $rw['id_carpa'];?></option>
+							  	<option value="<?php echo $rw['Id'];?>"><?php echo $rw['Id'];?></option>
 							  	<?php
 							  	}
 							  	?>
 						  	</select>
 				    	</div>
           	</div>
+						<div class="form-group">
+				    <label for="cochera" class="col-sm-3 control-label">Cochera 1</label>
+				    <div class="col-sm-8">
+					    <select class='form-control' name='cochera1' id='cochera1' required>
+						    <option value="">Selecciona Nro de Cochera</option>
+							    <?php 
+							      $query_cocheras=mysqli_query($conn,"select * from cocheras order by id_cocheras");
+							      while($rw=mysqli_fetch_array($query_cocheras))	{
+								  ?>
+							    <option value="<?php echo $rw['id_cocheras'];?>"><?php echo $rw['id_cocheras'];?></option>
+								  <?php
+							      }
+							    ?>
+					    </select>
+				    </div>
+          </div>
+					<div class="form-group">
+				    <label for="cochera" class="col-sm-3 control-label">Cochera 2</label>
+				    <div class="col-sm-8">
+					    <select class='form-control' name='cochera2' id='cochera2' required>
+						    <option value="">Selecciona Nro de Cochera</option>
+							    <?php 
+							      $query_cocheras=mysqli_query($conn,"select * from cocheras order by id_cocheras");
+							      while($rw=mysqli_fetch_array($query_cocheras))	{
+								  ?>
+							    <option value="<?php echo $rw['id_cocheras'];?>"><?php echo $rw['id_cocheras'];?></option>
+								  <?php
+							      }
+							    ?>
+					    </select>
+				    </div>
+          </div>
 						<div class="form-group">
 				    <label for="contrato" class="col-sm-3 control-label">Contrato</label>
 				    <div class="col-sm-6">

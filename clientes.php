@@ -51,7 +51,7 @@
 							$query_cliente=mysqli_query($conn,"select * from clientes order by Id");
 							while($rw=mysqli_fetch_array($query_cliente))	{
 								?>
-							<option value="<?php echo $rw['Id'];?>"><?php echo $rw['Nombre'];?></option>
+							<option value="<?php echo $rw['Id'];?>"><?php echo $rw['_nombre'];?></option>
 								<?php
 							}
 							?>
