@@ -38,6 +38,8 @@
 		$pago = mysqli_real_escape_string($conn,(strip_tags($_POST["pago"],ENT_QUOTES)));
 		$carpa = mysqli_real_escape_string($conn,(strip_tags($_POST["carpa"],ENT_QUOTES)));
 		$contrato = mysqli_real_escape_string($conn,(strip_tags($_POST["contrato"],ENT_QUOTES)));
+		$cochera1 = mysqli_real_escape_string($conn,(strip_tags($_POST["cochera1"],ENT_QUOTES)));
+		$cochera2 = mysqli_real_escape_string($conn,(strip_tags($_POST["cochera2"],ENT_QUOTES)));
     
 		$sql = "UPDATE clientes SET _nombre='".$nombre."', 
 		_email='".$email."', 
@@ -49,7 +51,9 @@
 		_patente_auto='".$patente."',
 		_pago='".$pago."',
 		_id_carpa='".$carpa."',
-		_contrato='".$contrato."'
+		_contrato='".$contrato."',
+		id_cochera1='".$cochera1."',
+		id_cochera2='".$cochera2."'
 		WHERE Id='".$id."'";
 
 		$query_update = mysqli_query($conn,$sql);

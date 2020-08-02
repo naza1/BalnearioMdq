@@ -9,7 +9,7 @@
 		// escaping, additionally removing everything that could be (html/javascript-) code
 		 $q = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
 		 $carpa_id = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['carpa_id'], ENT_QUOTES)));
-		 $aColumns = array('id_carpa');//Columnas de busqueda
+		 $aColumns = array('Id');//Columnas de busqueda
 		 $sTable = "carpas";
 		 $sWhere = "";
 		if ( $_GET['q'] != "" )

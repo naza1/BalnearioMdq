@@ -76,6 +76,8 @@ $('#editClient').on('show.bs.modal', function (event) {
   var pago = button.data('pago');
   var carpa = button.data('carpa');
   var contrato = button.data('contrato');
+  var cochera1 = button.data('cochera1');
+  var cochera2 = button.data('cochera2');
   var modal = $(this);
   modal.find('.modal-body #nombre').val(nombre);
   modal.find('.modal-body #dni').val(dni);
@@ -89,6 +91,8 @@ $('#editClient').on('show.bs.modal', function (event) {
   modal.find('.modal-body #carpa').val(carpa);
   modal.find('.modal-body #pago').val(pago);
   modal.find('.modal-body #contrato').val(contrato);
+  modal.find('.modal-body #cochera1').val(cochera1);
+  modal.find('.modal-body #cochera2').val(cochera2);
 })
 
 $("#editar_cliente").submit(function(event) {

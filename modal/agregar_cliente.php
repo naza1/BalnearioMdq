@@ -77,7 +77,7 @@
 							      $query_contrato = mysqli_query($conn,"select * from tipos_contrato order by id_contrato");
 							      while($rw=mysqli_fetch_array($query_contrato))	{
 								  ?>
-							  <option value="<?php echo $rw['id_contrato'];?>"><?php echo $rw['id_contrato'];?></option>			
+							  <option value="<?php echo $rw['tipo_contrato'];?>"><?php echo $rw['tipo_contrato'];?></option>
 								  <?php
 							    }
 							    ?>

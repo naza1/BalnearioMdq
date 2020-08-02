@@ -90,7 +90,7 @@
 						$tipocochera_id=$row['tipocochera_id'];
 						$cochera_tipo=$row['cochera_tipo'];
 						$cochera_detalle=$row['cochera_detalle'];
-						$date_added= date('d/m/Y', strtotime($row['date_added']));
+						//$date_added= date('d/m/Y', strtotime($row['date_added']));
 						
 						
 					?>
@@ -98,7 +98,7 @@
 						<td><?php echo $tipocochera_id; ?></td>
 						<td><?php echo $cochera_tipo; ?></td>
 						<td ><?php echo $cochera_detalle; ?></td>
-						<td ><?php echo $$date_added; ?></td>
+						<!-- <td ><?php echo $$date_added; ?></td> -->
 						
 						
 					<td class='text-right'>

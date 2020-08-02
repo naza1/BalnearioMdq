@@ -90,14 +90,14 @@
 						$perfil_id=$row['perfil_id'];
 						$perfil_tipo=$row['perfil_tipo'];
 						$perfil_detalle=$row['perfil_detalle'];
-						$date_added= date('d/m/Y', strtotime($row['date_added']));
+						//$date_added= date('d/m/Y', strtotime($row['date_added']));
 						
 					?>
 					<tr>
 						<td><?php echo $perfil_id; ?></td>
 						<td><?php echo $perfil_tipo; ?></td>
 						<td ><?php echo $perfil_detalle; ?></td>
-						<td><?php echo $date_added;?></td>
+						<!-- <td><?php echo $date_added;?></td> -->
 						
 					<td class='text-right'>
 						<a href="#" class='btn btn-default' title='Editar pasillo' data-nombre='<?php echo $id_contrato;?>' data-descripcion='<?php echo $tipo_contrato?>' data-id='<?php echo $id_contrato;?>' data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 

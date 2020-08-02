@@ -80,6 +80,8 @@
 						$pago = $row['_pago'];
 						$idCarpa = $row['_id_carpa'];
 						$contrato = $row['_contrato'];
+						$cochera1 = $row['id_cochera1'];
+						$cochera2 = $row['id_cochera2'];
 						$date_added = date('d/m/Y', strtotime($row['_created_at']));
 						
 					?>
@@ -104,6 +106,8 @@
 						data-pago = '<?php echo $pago;?>' 
 						data-carpa = '<?php echo $idCarpa;?>' 
 						data-contrato = '<?php echo $contrato;?>' 
+						data-cochera1 = '<?php echo $cochera1;?>' 
+						data-cochera2 = '<?php echo $cochera2;?>' 
 						data-toggle = "modal" 
 						data-target = "#editClient"><i class="glyphicon glyphicon-edit"></i></a> 
 						<a href="#" class='btn btn-default' title='Borrar cliente' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>

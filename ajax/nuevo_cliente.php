@@ -51,12 +51,14 @@
 		$cliente->_localidad = $localidad;
 		$cliente->_telefono = $telefono;
 		$cliente->_email = $email;
-		$cliente->_created__t = $createdAt;
+		$cliente->_created_at = $createdAt;
 		$cliente->_id_carpa = $nroCarpa;
 		$cliente->_patente_auto = $patenteAuto;
 		$cliente->_pago = $pago;
 		$cliente->_contrato = $contrato;
 		$cliente->_email__alternativo = $email_alternativo;
+		$cliente->id_cochera1 = $idCochera1;
+		$cliente->id_cochera2 = $idCochera2;
 		
 		$id = R::store($cliente);
 		if ($id > 0)

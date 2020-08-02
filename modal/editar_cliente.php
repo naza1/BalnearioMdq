@@ -89,7 +89,7 @@
 				    <label for="cochera" class="col-sm-3 control-label">Cochera 1</label>
 				    <div class="col-sm-8">
 					    <select class='form-control' name='cochera1' id='cochera1' required>
-						    <option value="">Selecciona Nro de Cochera</option>
+								<option selected="selected" value=""></option>
 							    <?php 
 							      $query_cocheras=mysqli_query($conn,"select * from cocheras order by id_cocheras");
 							      while($rw=mysqli_fetch_array($query_cocheras))	{
@@ -126,7 +126,7 @@
 							      $query_contrato = mysqli_query($conn,"select * from tipos_contrato order by id_contrato");
 							      while($rw=mysqli_fetch_array($query_contrato))	{
 								  ?>
-							  <option value="<?php echo $rw['id_contrato'];?>"><?php echo $rw['id_contrato'];?></option>			
+							  <option value="<?php echo $rw['tipo_contrato'];?>"><?php echo $rw['tipo_contrato'];?></option>
 								  <?php
 							    }
 							    ?>
