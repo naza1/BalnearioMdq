@@ -9,7 +9,7 @@
 		// escaping, additionally removing everything that could be (html/javascript-) code
 		 $q = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
 		 $carpa_id = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['carpa_id'], ENT_QUOTES)));
-		 $aColumns = array('id_carpa');//Columnas de busqueda
+		 $aColumns = array('Id');//Columnas de busqueda
 		 $sTable = "carpas";
 		 $sWhere = "";
 		if ( $_GET['q'] != "" )
@@ -35,7 +35,7 @@
 			}
 
 		}
-		$sWhere.=" order by id_carpa";
+		$sWhere.=" order by Id";
 		include 'pagination.php'; //include pagination file
 		//pagination variables
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
@@ -44,7 +44,7 @@
 		$offset = ($page - 1) * $per_page;
 		//Count the total number of row in your table*/
 		$count_query = mysqli_query($conn, "SELECT count(*) AS numrows FROM $sTable  $sWhere");
-		$row= mysqli_fetch_array($count_query	);
+		$row= mysqli_fetch_array($count_query);
 		$numrows = $row['numrows'];
 		$total_pages = ceil($numrows/$per_page);
 		$reload = './principal.php';
@@ -65,7 +65,7 @@
 					<th class='text-center'>Detalle</th>
 					<th class='text-center'>Contrato</th>
 					<th class='text-center'>Estado</th>		
-					<th class='text-center'>Titular</th>												
+					<th class='text-center'>Titular</th>
 					<th class='text-center'>Ocup.Actual</th>
 					
 					<th class='text-center'>Acciones</th>
@@ -73,12 +73,12 @@
 				</tr>
 				<?php
 				while ($row=mysqli_fetch_array($query)){
-						$id_carpa=$row['id_carpa'];
+						$id_carpa=$row['Id'];
 						$id_pasillo=$row['id_pasillo'];
 						$detalle_carpa=$row['detalle_carpa'];
 						$tipo_contrato=$row['tipo_contrato'];
 					    $tipo_estado=$row['tipo_estado'];
-						$id_cliente=$row['id_cliente'];				
+						$id_cliente=$row['_id_cliente'];
 						$ocupacion_actual=$row['ocupacion_actual'];
 						
 						

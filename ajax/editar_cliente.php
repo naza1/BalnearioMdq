@@ -38,23 +38,36 @@
 		$pago = mysqli_real_escape_string($conn,(strip_tags($_POST["pago"],ENT_QUOTES)));
 		$carpa = mysqli_real_escape_string($conn,(strip_tags($_POST["carpa"],ENT_QUOTES)));
 		$contrato = mysqli_real_escape_string($conn,(strip_tags($_POST["contrato"],ENT_QUOTES)));
+		$cochera1 = mysqli_real_escape_string($conn,(strip_tags($_POST["cochera1"],ENT_QUOTES)));
+		$cochera2 = mysqli_real_escape_string($conn,(strip_tags($_POST["cochera2"],ENT_QUOTES)));
     
-		$sql = "UPDATE clientes SET Nombre='".$nombre."', 
-		Email='".$email."', 
-		Email_Alternativo='".$emailAlternativo."', 
-		Dni='".$dni."', 
-		Domicilio='".$domicilio."',
-		Localidad='".$localidad."',
-		Telefono='".$telefono."',
-		PatenteAuto='".$patente."',
-		Pago='".$pago."',
-		IdCarpa='".$carpa."',
-		Contrato='".$contrato."'
+		$sql = "UPDATE clientes SET _nombre='".$nombre."', 
+		_email='".$email."', 
+		_email__alternativo='".$emailAlternativo."', 
+		_dni='".$dni."', 
+		_domicilio='".$domicilio."',
+		_localidad='".$localidad."',
+		_telefono='".$telefono."',
+		_patente_auto='".$patente."',
+		_pago='".$pago."',
+		_id_carpa='".$carpa."',
+		_contrato='".$contrato."',
+		id_cochera1='".$cochera1."',
+		id_cochera2='".$cochera2."'
 		WHERE Id='".$id."'";
 
 		$query_update = mysqli_query($conn,$sql);
 			if ($query_update){
-				$messages[] = "EL cliente ha sido actualizado satisfactoriamente.";
+				$messages[] = "El cliente ha sido actualizado satisfactoriamente.";
+
+				$carpaId = mysqli_query($conn, "SELECT Id FROM carpas WHERE _id_cliente='".$id."'");
+				$row = mysqli_fetch_assoc($carpaId);
+			  $idCarpaOld = $row['Id'];
+				$sqlCarpaOld = "UPDATE carpas SET _id_cliente=NULL WHERE Id='".$idCarpaOld."'";
+				$query_new_insert = mysqli_query($conn, $sqlCarpaOld);
+				$sqlCarpa = "UPDATE carpas SET _id_cliente='".$id."' WHERE Id='".$carpa."'";
+				$query_new_insert = mysqli_query($conn, $sqlCarpa);
+
 			} else{
 				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($conn);
 			}

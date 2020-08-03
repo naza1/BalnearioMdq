@@ -36,8 +36,8 @@
 			
 			
 			<?php
-				include("modal/registro_formas_pago.php");
-				include("modal/editar_formas_pago.php");
+				//include("modal/registro_formas_pago.php");
+				//include("modal/editar_formas_pago.php");
 			?>
 			<form class="form-horizontal" role="form" id="datos_cotizacion">
 				

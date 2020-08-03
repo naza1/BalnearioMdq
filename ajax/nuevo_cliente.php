@@ -17,9 +17,14 @@
 	if (!empty($_POST['name']) && !empty($_POST['documento']) && !empty($_POST['direccion']) && 
 		!empty($_POST['localidad']) && !empty($_POST['telefono']) && !empty($_POST['email']))
 	{ 
+		require '../rb-mysql.php';
 		require_once ("../config/db.php");
 		require_once ("../config/conexion.php");
 		include("../funciones.php");
+
+		R::setup('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
+		//R::setup('mysql:host=localhost;dbname=balneario', 'root', '');
+		$cliente = R::dispense('clientes');
 		
 		$name = mysqli_real_escape_string($conn,(strip_tags($_POST["name"],ENT_QUOTES)));
 		$dni = mysqli_real_escape_string($conn,(strip_tags($_POST["documento"],ENT_QUOTES)));
@@ -33,24 +38,41 @@
 		$patenteAuto = mysqli_real_escape_string($conn,(strip_tags($_POST["patente"],ENT_QUOTES)));
 		$pago = mysqli_real_escape_string($conn,(strip_tags($_POST["pago"],ENT_QUOTES)));
 		$contrato = mysqli_real_escape_string($conn,(strip_tags($_POST["id_contrato"],ENT_QUOTES)));
+		$nroCarpa = strip_tags($_POST["id_carpa"],ENT_QUOTES);
+		$patenteAuto = strip_tags($_POST["patente"],ENT_QUOTES);
+		$pago = strip_tags($_POST["pago"],ENT_QUOTES);
+		$contrato = strip_tags($_POST["id_contrato"],ENT_QUOTES);
+		$idCochera1 = strip_tags($_POST["cochera1"],ENT_QUOTES);
+		$idCochera2 = strip_tags($_POST["cochera2"],ENT_QUOTES);
+
+		$cliente->_nombre = $name;
+		$cliente->_dni = $dni;
+		$cliente->_domicilio = $direccion;
+		$cliente->_localidad = $localidad;
+		$cliente->_telefono = $telefono;
+		$cliente->_email = $email;
+		$cliente->_created_at = $createdAt;
+		$cliente->_id_carpa = $nroCarpa;
+		$cliente->_patente_auto = $patenteAuto;
+		$cliente->_pago = $pago;
+		$cliente->_contrato = $contrato;
+		$cliente->_email__alternativo = $email_alternativo;
+		$cliente->id_cochera1 = $idCochera1;
+		$cliente->id_cochera2 = $idCochera2;
 		
-		$sql = "INSERT INTO clientes (Nombre, Dni, Domicilio, Localidad, Telefono, Email, CreatedAt, IdCarpa, PatenteAuto, Pago, Contrato, Email_Alternativo) 
-		VALUES ('$name','$dni','$direccion','$localidad', '$telefono','$email', '$createdAt', '$nroCarpa', '$patenteAuto', '$pago', '$contrato', '$email_alternativo')";
-		$query_new_insert = mysqli_query($conn,$sql);
-			if ($query_new_insert)
-			{
-				$messages[] = "El cliente ha sido grabado satisfactoriamente.";
-				// $id_producto=get_row('products','id_producto', 'codigo_producto', $codigo);
-				// $user_id=$_SESSION['user_id'];
-				// $firstname=$_SESSION['firstname'];
-				// $nota="$firstname agregó $stock producto(s) al inventario";
-				// echo guardar_historial($id_producto,$user_id,$date_added,$nota,$codigo,$stock);
-				
-			} 
-			else
-			{
-				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($conn);
-			}
+		$id = R::store($cliente);
+		if ($id > 0)
+		{
+			$messages[] = "El cliente ha sido grabado satisfactoriamente.";
+			$sqlCarpa = "UPDATE carpas SET _id_cliente='".$id."' WHERE Id='".$nroCarpa."'";
+			R::exec($sqlCarpa);
+			$sqlCochera1 = "UPDATE cocheras SET id_cliente='".$id."' WHERE id_cocheras='".$idCochera1."'";
+			R::exec($sqlCochera1);
+			$sqlCochera2 = "UPDATE cocheras SET id_cliente='".$id."' WHERE id_cocheras='".$idCochera2."'";
+			R::exec($sqlCochera2);
+		}
+		else
+			$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($conn);
 	}
 	else 
 	{

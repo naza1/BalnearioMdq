@@ -64,10 +64,10 @@
 							<option value="">Todas</option>
 							
 							<?php 
-							$query_cliente=mysqli_query($conn,"select * from carpas order by id_carpa");
+							$query_cliente=mysqli_query($conn,"select * from carpas order by Id");
 							while($rw=mysqli_fetch_array($query_cliente))	{
 								?>
-							<option value="<?php echo $rw['id_carpa'];?>"><?php echo $rw['id_carpa'];?></option>
+							<option value="<?php echo $rw['Id'];?>"><?php echo $rw['Id'];?></option>
 								<?php
 							}
 							?>

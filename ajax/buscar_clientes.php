@@ -69,18 +69,20 @@
 				<?php
 				while ($row = mysqli_fetch_array($query)){
 						$id = $row['Id'];
-						$nombre = $row['Nombre'];
-            $dni = $row['Dni'];
-						$email = $row['Email'];
-						$domicilio = $row['Domicilio'];
-						$localidad = $row['Localidad'];
-						$telefono = $row['Telefono'];
-						$email_alternativo = $row['Email_Alternativo'];
-						$patente = $row['PatenteAuto'];
-						$pago = $row['Pago'];
-						$idCarpa = $row['IdCarpa'];
-						$contrato = $row['Contrato'];
-						$date_added = date('d/m/Y', strtotime($row['CreatedAt']));
+						$nombre = $row['_nombre'];
+            $dni = $row['_dni'];
+						$email = $row['_email'];
+						$domicilio = $row['_domicilio'];
+						$localidad = $row['_localidad'];
+						$telefono = $row['_telefono'];
+						$email_alternativo = $row['_email__alternativo'];
+						$patente = $row['_patente_auto'];
+						$pago = $row['_pago'];
+						$idCarpa = $row['_id_carpa'];
+						$contrato = $row['_contrato'];
+						$cochera1 = $row['id_cochera1'];
+						$cochera2 = $row['id_cochera2'];
+						$date_added = date('d/m/Y', strtotime($row['_created_at']));
 						
 					?>
 					<tr>
@@ -104,6 +106,8 @@
 						data-pago = '<?php echo $pago;?>' 
 						data-carpa = '<?php echo $idCarpa;?>' 
 						data-contrato = '<?php echo $contrato;?>' 
+						data-cochera1 = '<?php echo $cochera1;?>' 
+						data-cochera2 = '<?php echo $cochera2;?>' 
 						data-toggle = "modal" 
 						data-target = "#editClient"><i class="glyphicon glyphicon-edit"></i></a> 
 						<a href="#" class='btn btn-default' title='Borrar cliente' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>

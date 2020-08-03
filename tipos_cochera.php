@@ -36,8 +36,8 @@
 			
 			
 			<?php
-				include("modal/registro_tipos_cochera.php");
-				include("modal/editar_tipos_cochera.php");
+				//include("modal/registro_tipos_cochera.php");
+				//include("modal/editar_tipos_cochera.php");
 			?>
 			<form class="form-horizontal" role="form" id="datos_cotizacion">
 				
