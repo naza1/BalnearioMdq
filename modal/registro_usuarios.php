@@ -64,7 +64,7 @@
 							$query_perfil=mysqli_query($conn,"select * from perfiles order by perfil_id");
 							while($rw=mysqli_fetch_array($query_perfil))	{
 								?>
-							<option value="<?php echo $rw['id_perfil'];?>"><?php echo $rw['perfil_tipo'];?></option>			
+							<option value="<?php echo $rw['perfil_id'];?>"><?php echo $rw['perfil_tipo'];?></option>			
 								<?php
 							}
 							?>

@@ -8,11 +8,11 @@
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	if (isset($_GET['id'])){
 		$user_id=intval($_GET['id']);
-		$query=mysqli_query($cnon, "select * from users where user_id='".$user_id."'");
+		$query=mysqli_query($conn, "select * from users where Id='".$user_id."'");
 		$rw_user=mysqli_fetch_array($query);
-		$count=$rw_user['user_id'];
-		if ($user_id!=1){
-			if ($delete1=mysqli_query($conn,"DELETE FROM users WHERE user_id='".$user_id."'")){
+		$count=$rw_user['Id'];
+		if ($user_id != 1){
+			if ($delete1=mysqli_query($conn,"DELETE FROM users WHERE Id='".$user_id."'")){
 			?>
 			<div class="alert alert-success alert-dismissible" role="alert">
 			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -57,7 +57,7 @@
 			$sWhere = substr_replace( $sWhere, "", -3 );
 			$sWhere .= ')';
 		}
-		$sWhere.=" order by user_id desc";
+		$sWhere.=" order by Id desc";
 		include 'pagination.php'; //include pagination file
 		//pagination variables
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
@@ -90,7 +90,7 @@
 				</tr>
 				<?php
 				while ($row=mysqli_fetch_array($query)){
-						$user_id=$row['user_id'];
+						$user_id=$row['Id'];
 						$fullname=$row['firstname']." ".$row["lastname"];
 						$user_name=$row['user_name'];
 						$user_email=$row['user_email'];
@@ -113,7 +113,7 @@
 					<td ><span class="pull-right">
 					<a href="#" class='btn btn-default' title='Editar usuario' onclick="obtener_datos('<?php echo $user_id;?>');" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
 					<a href="#" class='btn btn-default' title='Cambiar contraseña' onclick="get_user_id('<?php echo $user_id;?>');" data-toggle="modal" data-target="#myModal3"><i class="glyphicon glyphicon-cog"></i></a>
-					<a href="#" class='btn btn-default' title='Borrar usuario' onclick="eliminar('<? echo $user_id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>
+					<a href="#" class='btn btn-default' title='Borrar usuario' onclick="eliminar('<?php echo $user_id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>
 						
 					</tr>
 					<?php

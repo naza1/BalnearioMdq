@@ -147,12 +147,11 @@ $( "#editar_password" ).submit(function( event ) {
 			var email = $("#email"+id).val();
 			var perfil = $("#perfil"+id).val();
 			
-			
 			$("#mod_id").val(id);
 			$("#firstname2").val(nombres);
 			$("#lastname2").val(apellidos);
 			$("#user_name2").val(usuario);
 			$("#user_email2").val(email);
-			
+			$("#perfil").val(perfil);
 		}
 </script>
