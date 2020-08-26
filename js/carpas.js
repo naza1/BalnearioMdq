@@ -72,7 +72,7 @@ $('#editCarpa').on('show.bs.modal', function (event) {
   var tipo_contrato = button.data('tipo_contrato') 
   var detalle_carpa = button.data('detalle_carpa') 
   var id_pasillo = button.data('id_pasillo') 
-  var id_carpa= button.data('id_carpa') 
+  var id_carpa= button.data('id')
   var modal = $(this)
   
   
@@ -83,21 +83,15 @@ $('#editCarpa').on('show.bs.modal', function (event) {
   modal.find('.modal-body #tipo_contrato').val(tipo_contrato)
   modal.find('.modal-body #detalle_carpa').val(detalle_carpa) 
   modal.find('.modal-body #id_pasillo').val(id_pasillo)
-  modal.find('.modal-body #id_carpa').val(id_carpa)
+  modal.find('.modal-body #id').val(id_carpa)
 })
 
-
-
-
-
-			
-
-$("#editar_carpas").submit(function(event) {
+$("#editar_carpa").submit(function(event) {
   $('#actualizar_datos').attr("disabled", true);
   var parametros = $(this).serialize();
 	$.ajax({
     type: "POST",
-		url: "ajax/editar_carpas.php",
+		url: "ajax/editar_carpa.php",
 		data: parametros,
 		beforeSend: function(objeto){
 			$("#resultados").html("Mensaje: Cargando...");

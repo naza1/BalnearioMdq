@@ -13,24 +13,11 @@
 		    <div class="modal-body">
 			    <form class="form-horizontal" method="post" id="editar_carpa" name="editar_carpa">
 			      <div id="resultados_ajax2"></div>
-			      
+						<input type="hidden" name="id" id="id">
             <div class="form-group">
-				      <label for="nombre" class="col-sm-3 control-label">Numero de Carpa</label>
+				      <label for="ocupantes" class="col-sm-3 control-label">Ocupantes</label>
 				      <div class="col-sm-8">
-				        <input type="text" class="form-control" id="id_carpa" name="id_carpa"  required>
-					      <input type="hidden" name="id_carpa" id="id_carpa">
-				      </div>
-			      </div>
-            <div class="form-group">
-				      <label for="dni" class="col-sm-3 control-label">Numero de Carpa</label>
-				      <div class="col-sm-8">
-				        <textarea class="form-control" id="numero_carpa" name="numero_carpa" ></textarea>
-				      </div>
-			      </div>
-            <div class="form-group">
-				      <label for="email" class="col-sm-3 control-label">Estado</label>
-				      <div class="col-sm-8">
-				        <textarea class="form-control" id="estado" name="estado" ></textarea>
+				        <input type="number" class="form-control" id="ocupacion_actual" name="ocupacion_actual" min="0" max="6" required></input>
 				      </div>
 			      </div>
 		        <div class="modal-footer">
