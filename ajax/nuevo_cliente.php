@@ -23,7 +23,6 @@
 		include("../funciones.php");
 
 		R::setup('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
-		//R::setup('mysql:host=localhost;dbname=balneario', 'root', '');
 		$cliente = R::dispense('clientes');
 		
 		$name = mysqli_real_escape_string($conn,(strip_tags($_POST["name"],ENT_QUOTES)));

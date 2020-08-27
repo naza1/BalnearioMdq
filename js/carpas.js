@@ -75,8 +75,6 @@ $('#editCarpa').on('show.bs.modal', function (event) {
   var id_carpa= button.data('id')
   var modal = $(this)
   
-  
- 
   modal.find('.modal-body #ocupacion_actual').val(ocupacion_actual) 
   modal.find('.modal-body #id_cliente').val(id_cliente)
   modal.find('.modal-body #tipo_estado').val(tipo_estado)

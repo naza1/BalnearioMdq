@@ -13,7 +13,8 @@
 	/* Connect To Database*/
 	require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
-	
+	require 'rb-mysql.php';
+	R::setup('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
 	$active_pasilloss="active";
 	$active_carpas="active";
 	
@@ -98,18 +99,18 @@
 					<div class='col-md-2'>
 						<label>TOTAL DE CARPAS</label>
 						<?php
-							$query_carpa1=mysqli_query($conn,"select * from carpas");
+							$summ = (int)R::getCell('select COUNT(*) from carpas;');
 						?>
-						<br><button type='button' class="btn btn-success" <label><?php echo $query_carpa1->num_rows;?></label> </button>
+						<br><label><?php echo $summ;?></label>
 						
 						
 					</div>
 					<div class='col-md-2'>
 						<label>CANT. PERSONAS</label>
 						<?php
-							$query_carpa1=mysqli_query($conn,"select * from carpas");
+							$summ = (int)R::getCell('select SUM(ocupacion_actual) AS value_sum from carpas;');
 						?>
-						<br><button type='button' class="btn btn-success" <label><?php echo $query_carpa1->num_rows;?></label> </button>
+						<br><label><?php echo $summ;?></label>
 						
 						
 					</div>

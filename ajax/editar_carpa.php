@@ -1,6 +1,5 @@
 <?php
-	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
-	/*Inicia validacion del lado del servidor*/
+	include('is_logged.php');
   if (empty($_POST['id'])) 
   {
     $errors[] = "Id Carpa Vacio";
@@ -8,9 +7,7 @@
   else if (!empty($_POST['id']) && !empty($_POST['ocupacion_actual']))
   {
 		/* Connect To Database*/
-		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
-		//require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
-		// escaping, additionally removing everything that could be (html/javascript-) code
+		require_once ("../config/db.php");
 		require '../rb-mysql.php';
 		$ocupacion_actual = $_POST["ocupacion_actual"];
 		$id_carpa = $_POST['id'];
