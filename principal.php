@@ -34,10 +34,34 @@
 	<div class="panel panel-success">
 		<div class="panel-heading">
 		    <div class="btn-group pull-right">
-				<button type='button' class="btn btn-success" data-toggle="modal" data-target="#nuevaCarpa"><span class="glyphicon glyphicon-plus" ></span> Agregar Carpa</button>
-			
+			<button type='button' class="btn btn btn-danger" data-toggle="modal" data-target="#resetcarpas"><span class="glyphicon glyphicon-off" ></span> FIN DEL DIA</button> 
+		<!-- Modal Reset-->
+<div class="modal fade" id="resetcarpas" tabindex="-1" role="dialog" aria-labelledby="resetacarpasLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+		 
+        <h4 class="modal-title" id="exampleModalLabel">CONTADOR A CERO OCUPANTES DE TODAS LAS CARPAS</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		  <p class="text-warning">RECUERDE !!!</p>
+		  <h5 class="modal-title" id="exampleModalLabel">ingrese Contraseña Administrador</h5>
+         <input class="form-control" placeholder="Contraseña" name="user_password" type="password" value="" autocomplete="off" required>...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
+		
 			</div>
-			<h4><i class='glyphicon glyphicon-home'></i> CARPAS</h4>
+			<h4><i class='glyphicon glyphicon-home'></i> CARPAS </h4> 
+					
 			
 			
 		</div>
@@ -52,32 +76,13 @@
 				
 						
 				<div class="row">
-					<div class='col-md-2'>
+					<div class='col-md-2 '>
 						<label>Numero de Carpa</label>
 						
 						<input type="text" class="form-control" id="q" placeholder="Ingrese Numero" onkeyup='load(1);'>
 					</div>
 					
-					<div class='col-md-2'>
-						<label>Filtrar x Carpa</label>
-						<select class='form-control' name='id_carpa' id='carpa_id' onchange="load(1);">
-							<option value="">Todas</option>
-							
-							<?php 
-							$query_cliente=mysqli_query($conn,"select * from carpas order by Id");
-							while($rw=mysqli_fetch_array($query_cliente))	{
-								?>
-							<option value="<?php echo $rw['Id'];?>"><?php echo $rw['Id'];?></option>
-								<?php
-							}
-							?>
-						</select>
-					</div>
-					<div class='col-md-2'>
-						<label>Numero de Pasillo</label>
-						
-						<input type="text" class="form-control" id="q" placeholder="Ingrese Numero" onkeyup='load(2);'>
-					</div>
+					
 					<div class='col-md-2'>
 						<label>Filtrar x Pasillo</label>
 				
@@ -96,21 +101,41 @@
 						
 						
 					</div>
-					<div class='col-md-2'>
-						<label>TOTAL DE CARPAS</label>
-						<?php
-							$summ = (int)R::getCell('select COUNT(*) from carpas;');
-						?>
-						<br><label><?php echo $summ;?></label>
+						<div class='col-md-2'>
+						<label>Filtrar x Contrato</label>
+				
+						<select class='form-control' name='id_contrato' id='idcontrato' onchange="load(2);">
+							<option value="">Todos</option>
+							
+							<?php 
+							$query_cliente=mysqli_query($conn,"select * from tipos_contrato order by id_contrato");
+							while($rw=mysqli_fetch_array($query_cliente))	{
+								?>
+							<option value="<?php echo $rw['id_contrato'];?>"><?php echo $rw['id_contrato'];?></option>
+								<?php
+							}
+							?>
+						</select>	
 						
 						
 					</div>
-					<div class='col-md-2'>
-						<label>CANT. PERSONAS</label>
+					
+					
+					<div class='col-md-2 text-center'>
+					<h4>	<label>TOTAL CARPAS
+						<?php
+							$summ = (int)R::getCell('select COUNT(*) from carpas;');
+						?>
+					<?php echo $summ;?></label> </h4>
+						
+						
+					</div>
+					<div class='col-md-2 text-center'>
+					<h4>	<label>CANT. PERSONAS
 						<?php
 							$summ = (int)R::getCell('select SUM(ocupacion_actual) AS value_sum from carpas;');
 						?>
-						<br><label><?php echo $summ;?></label>
+						<?php echo $summ;?></label> </h4>
 						
 						
 					</div>
