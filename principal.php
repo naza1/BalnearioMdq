@@ -86,7 +86,7 @@
 					<div class='col-md-2'>
 						<label>Filtrar x Pasillo</label>
 				
-						<select class='form-control' name='id_pasillo' id='pasillo_id' onchange="load(2);">
+						<select class='form-control' name='id_pasillo' id='pasillo_id' onchange="load(1);">
 							<option value="">Todos</option>
 							
 							<?php 
@@ -136,11 +136,9 @@
 							$summ = (int)R::getCell('select SUM(ocupacion_actual) AS value_sum from carpas;');
 						?>
 						<?php echo $summ;?></label> </h4>
-						
-						
+						<div id="t"></div>
 					</div>
-					
-						
+					</div>
 					</div>
 					<div class='col-md-12 text-center'>
 						<span id="loader"></span>

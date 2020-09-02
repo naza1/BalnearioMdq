@@ -1,15 +1,14 @@
 <?php
-	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
-	/* Connect To Database*/
-	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
-	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
+	include('is_logged.php');
+	require_once ("../config/db.php");
+	require_once ("../config/conexion.php");
+	require '../rb-mysql.php';
 	
 		$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	if($action == 'ajax'){
-		// escaping, additionally removing everything that could be (html/javascript-) code
 		 $q = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		 $carpa_id = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['carpa_id'], ENT_QUOTES)));
-		 $aColumns = array('Id');//Columnas de busqueda
+		 //$carpa_id = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['carpa_id'], ENT_QUOTES)));
+		 $aColumns = array('Id');
 		 $sTable = "carpas";
 		 $sWhere = "";
 		if ( $_GET['q'] != "" )
@@ -23,15 +22,29 @@
 			$sWhere .= ')';
 		} else
 		{
-			if ( $_GET['carpa_id'] != "" )
+			// if ( $_GET['carpa_id'] != "" )
+			// {
+			// 	$sWhere = "WHERE (";
+			// for ( $i=0 ; $i<count($aColumns) ; $i++ )
+			// {
+			// 	$sWhere .= $aColumns[$i]." LIKE '%".$carpa_id."%' OR ";
+			// }
+			// $sWhere = substr_replace( $sWhere, "", -3 );
+			// $sWhere .= ')';
+			// }
+			$pasillo_id = $_GET['pasillo_id'];
+			if ($pasillo_id != "")
 			{
+				$aColumns1 = array('id_pasillo');
+				//$idPasillo = R::exec("SELECT Id FROM pasillos WHERE nombre_pasillo= $pasilloNombre");
 				$sWhere = "WHERE (";
-			for ( $i=0 ; $i<count($aColumns) ; $i++ )
-			{
-				$sWhere .= $aColumns[$i]." LIKE '%".$carpa_id."%' OR ";
-			}
-			$sWhere = substr_replace( $sWhere, "", -3 );
-			$sWhere .= ')';
+				for ( $i=0 ; $i<count($aColumns1) ; $i++ )
+				{
+					//$sWhere .= $aColumns[$i]." LIKE '%".$pasillo_id."%' OR ";
+					$sWhere .= $aColumns1[$i]. " = '".$pasillo_id."' OR ";
+				}
+				$sWhere = substr_replace( $sWhere, "", -3 );
+				$sWhere .= ')';
 			}
 
 		}
@@ -90,8 +103,8 @@
 						<td class='text-center'><?php echo $detalle_carpa; ?></td>
 						<td class='text-center'><?php echo $tipo_contrato; ?></td>
 						<td class='text-center'><?php echo $tipo_estado; ?></td>
-						<td class='text-center'><?php echo $id_cliente; ?></td>				
-						<td class='text-center'><?php echo $ocupacion_actual; ?></td>						
+						<td class='text-center'><?php echo $id_cliente; ?></td>
+						<td class='text-center'><?php echo $ocupacion_actual; ?></td>
 					
 						
 					<td class='text-center'>
@@ -108,6 +121,7 @@
 				<tr>
 					<td colspan=4><span class="pull-right">
 					<?php
+					echo $page;
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?></span></td>
 				</tr>

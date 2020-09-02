@@ -5,8 +5,8 @@ $(document).ready(function(){
 function load(page){
   var q= $("#q").val();
 
-  var carpa_id= $("#carpa_id").val();
-  var parametros={'action':'ajax','page':page,'q':q,'carpa_id':carpa_id};
+  var pasillo_id= $("#pasillo_id").val();
+  var parametros={'action':'ajax','page':page,'q':q,'pasillo_id':pasillo_id};
   $("#loader").fadeIn('slow');
   $.ajax({
     data: parametros,
