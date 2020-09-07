@@ -40,21 +40,22 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-		 
         <h4 class="modal-title" id="exampleModalLabel">CONTADOR A CERO OCUPANTES DE TODAS LAS CARPAS</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-		  <p class="text-warning">RECUERDE !!!</p>
-		  <h5 class="modal-title" id="exampleModalLabel">ingrese Contraseña Administrador</h5>
-         <input class="form-control" placeholder="Contraseña" name="user_password" type="password" value="" autocomplete="off" required>...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-danger">Confirmar</button>
-      </div>
+			<form id="formReset" method="POST">
+      	<div id="modal-reset" class="modal-body">
+					<p class="text-warning">RECUERDE !!!</p>
+					<h5 class="modal-title" id="exampleModalLabel">Ingrese Contraseña Administrador</h5>
+        	<input class="form-control" id="user_password" placeholder="Contraseña" name="user_password" type="password" autocomplete="off" required>
+      	</div>
+      	<div class="modal-footer">
+        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        	<button type="submit" class="btn btn-danger">Confirmar</button>
+      	</div>
+			</form>
     </div>
   </div>
 </div>
@@ -150,12 +151,6 @@
 					
 				</div>
 			</form>
-				
-			
-		
-	
-			
-			
 			
   </div>
 </div>
@@ -182,5 +177,26 @@
 		
 		?>	
 	});
+
+	$('#formReset').submit(function( event )
+	{
+		//var parametros = $('#resetPasswordId').val();
+		var parametros = $(this).serialize();
+  	$.ajax({
+			type: "POST",
+    	data: parametros,
+    	url:'./ajax/setearOcupantes.php',
+			beforeSend: function(objeto)
+			{
+				$('#loader').html('<img src="./img/ajax-loader.gif"> Reseateando...');
+			},
+			success:function(data)
+			{
+				$('#modal-reset').html("Se reseteo correctamente los ocupantes.");
+				$('#loader').html('');
+			}
+  	})
+	})
+
 </script>
 
