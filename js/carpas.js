@@ -22,8 +22,6 @@ function load(page){
   })
 }
 
-
-
 $( "#add_carpa" ).submit(function( event ) {
   $('#add_carpa').attr("disabled", true);
   

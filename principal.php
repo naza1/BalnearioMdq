@@ -61,13 +61,8 @@
 		
 			</div>
 			<h4><i class='glyphicon glyphicon-home'></i> CARPAS </h4> 
-					
-			
-			
 		</div>
 		<div class="panel-body">
-		
-			
 			
 			<?php
 			include("modal/editar_carpa.php");

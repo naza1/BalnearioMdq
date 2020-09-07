@@ -7,7 +7,6 @@
 		$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	if($action == 'ajax'){
 		 $q = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		 //$carpa_id = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['carpa_id'], ENT_QUOTES)));
 		 $aColumns = array('Id');
 		 $sTable = "carpas";
 		 $sWhere = "";
@@ -22,25 +21,13 @@
 			$sWhere .= ')';
 		} else
 		{
-			// if ( $_GET['carpa_id'] != "" )
-			// {
-			// 	$sWhere = "WHERE (";
-			// for ( $i=0 ; $i<count($aColumns) ; $i++ )
-			// {
-			// 	$sWhere .= $aColumns[$i]." LIKE '%".$carpa_id."%' OR ";
-			// }
-			// $sWhere = substr_replace( $sWhere, "", -3 );
-			// $sWhere .= ')';
-			// }
 			$pasillo_id = $_GET['pasillo_id'];
 			if ($pasillo_id != "")
 			{
 				$aColumns1 = array('id_pasillo');
-				//$idPasillo = R::exec("SELECT Id FROM pasillos WHERE nombre_pasillo= $pasilloNombre");
 				$sWhere = "WHERE (";
 				for ( $i=0 ; $i<count($aColumns1) ; $i++ )
 				{
-					//$sWhere .= $aColumns[$i]." LIKE '%".$pasillo_id."%' OR ";
 					$sWhere .= $aColumns1[$i]. " = '".$pasillo_id."' OR ";
 				}
 				$sWhere = substr_replace( $sWhere, "", -3 );
@@ -64,6 +51,14 @@
 		//main query to fetch the data
 		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
 		$query = mysqli_query($conn, $sql);
+		
+		if($_GET['pasillo_id'] != 0)
+		{
+			$amountPeople="SELECT SUM(ocupacion_actual) AS suma FROM Carpas WHERE id_pasillo='".$_GET['pasillo_id']."'";
+			$amount = mysqli_query($conn, $amountPeople);
+			$a=mysqli_fetch_array($amount);
+		}
+	
 		//loop through fetched data
 		if ($numrows>0){
 			
@@ -79,13 +74,15 @@
 					<th class='text-center'>Contrato</th>
 					<th class='text-center'>Estado</th>		
 					<th class='text-center'>Titular</th>
-					<th class='text-center'>Ocup.Actual</th>
+					<th class='text-center'>Ocup.Actual (<?php echo $a['suma'] ?? 0;?>)</th>
 					
 					<th class='text-center'>Acciones</th>
 					
 				</tr>
 				<?php
-				while ($row=mysqli_fetch_array($query)){
+				$ocupacionTotal = 0;
+				while ($row=mysqli_fetch_array($query))
+				{
 						$id_carpa=$row['Id'];
 						$id_pasillo=$row['id_pasillo'];
 						$detalle_carpa=$row['detalle_carpa'];
@@ -93,8 +90,7 @@
 					    $tipo_estado=$row['tipo_estado'];
 						$id_cliente=$row['_id_cliente'];
 						$ocupacion_actual=$row['ocupacion_actual'];
-						
-						
+						$ocupacionTotal += $ocupacion_actual;
 					?>
 					<tr>
 						
@@ -121,7 +117,6 @@
 				<tr>
 					<td colspan=4><span class="pull-right">
 					<?php
-					echo $page;
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?></span></td>
 				</tr>
