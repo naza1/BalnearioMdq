@@ -46,10 +46,10 @@ $( "#add_integrante" ).submit(function( event ) {
 function eliminar(id)
 {
   var q= $("#q").val();
-  if (confirm("Realmente deseas eliminar el cliente ?")){	
+  if (confirm("Realmente deseas eliminar el integrante ?")){	
     $.ajax({
       type: "GET",
-      url: "./ajax/eliminar_Integrante.php",
+      url: "./ajax/eliminar_integrante.php",
       data: "id="+id,"q":q,
       beforeSend: function(objeto){
       $("#resultados").html("Mensaje: Cargando...");
@@ -62,8 +62,8 @@ function eliminar(id)
   }
 }
 
-$('#editClient').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget); // Button that triggered the modal
+$('#editIntegrante').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget);
   var nombre = button.data('nombre');
   var dni = button.data('dni');
   var email = button.data('email');
@@ -95,18 +95,18 @@ $('#editClient').on('show.bs.modal', function (event) {
   modal.find('.modal-body #cochera2').val(cochera2);
 })
 
-$("#editar_cliente").submit(function(event) {
+$("#editar_integrante").submit(function(event) {
   $('#actualizar_datos').attr("disabled", true);
   var parametros = $(this).serialize();
 	$.ajax({
     type: "POST",
-		url: "ajax/editar_cliente.php",
+		url: "ajax/editar_integrante.php",
 		data: parametros,
 		beforeSend: function(objeto){
 			$("#resultados").html("Mensaje: Cargando...");
 		},
 		success: function(datos){
-      $('#editClient').modal('hide');
+      $('#editIntegrante').modal('hide');
 			$('#actualizar_datos').attr("disabled", false);
       load(1);
       $("#resultados").html(datos);
