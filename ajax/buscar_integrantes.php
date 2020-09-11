@@ -9,8 +9,8 @@
 		// escaping, additionally removing everything that could be (html/javascript-) code
 		 $q = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
 		 $cliente_id = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['integrante_id'], ENT_QUOTES)));
-		 $aColumns = array('id_integrante');//Columnas de busqueda
-		 $sTable = "integrantes_carpa";
+		 $aColumns = array('Id');//Columnas de busqueda
+		 $sTable = "integrantes";
 		 $sWhere = "";
 		if ( $_GET['q'] != "" )
 		{
@@ -35,34 +35,31 @@
 			}
 
 		}
-		$sWhere.=" order by id";
+		$sWhere.=" order by Id";
 		include 'pagination.php'; //include pagination file
 		//pagination variables
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
 		$per_page = 10; //how much records you want to show
 		$adjacents  = 4; //gap between pages after number of adjacents
 		$offset = ($page - 1) * $per_page;
-		//Count the total number of row in your table*/
 		$count_query = mysqli_query($conn, "SELECT count(*) AS numrows FROM $sTable  $sWhere");
-		$row= mysqli_fetch_array($count_query	);
-		$numrows = $row['numrows'];
+		$count_query2 = mysqli_fetch_array($count_query);
+		$numrows = $count_query2['numrows'];
 		$total_pages = ceil($numrows/$per_page);
 		$reload = './integrantes.php';
-		//main query to fetch the data
-		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
+		$sql="SELECT * FROM $sTable $sWhere LIMIT $offset,$per_page";
 		$query = mysqli_query($conn, $sql);
-		//loop through fetched data
 		if ($numrows>0){
 			
 			?>
 			<div class="table-responsive">
 			  <table class="table">
 				<tr  class="success">
-                    <th>Nro</th>
+          <th>Nro</th>
 					<th>Nombre</th>
 					<th>Documento</th>
-                    <th>D.N.I</th>
-                    <th>Edad</th>
+          <th>D.N.I</th>
+          <th>Edad</th>
 					<th>Domicilio</th>
 					<th>Telefono</th>
 					<th>Vinculo</th>
@@ -70,59 +67,44 @@
 					<th>Asistencia</th>
 					<th>Cliente</th>
 					<th class='text-right'>Acciones</th>
-					
 				</tr>
 				<?php
 				while ($row = mysqli_fetch_array($query)){
-						$Id_integrante = $row['id_integrante'];
-						$nombres = $row['nombres'];
-						$dni = $row['_dni'];
+						$id_integrante = $row['Id'];
+						$nombre = $row['nombres'];
+						$dni = $row['dni'];
 						$edad = $row['edad'];
 						$domicilio = $row['domicilio'];
 						$telefono = $row['telefono'];
 						$vinculo_nombre = $row['vinculo_nombre'];
 						$estado_salud = $row['estado_salud'];
 						$asistencia = $row['asistencia'];
-						$id_cliente = $row['id_cliente'];
-						$date_added = date('d/m/Y', strtotime($row['_created_at']));
+						$id_cliente = $row['_id_cliente'];
+						$date_added = date('d/m/Y', strtotime($row['date_added']));
 						
 					?>
 					<tr>
-                        <td><?php echo $id_integrante; ?></td>
-						<td><?php echo $nombres; ?></td>
+            <td><?php echo $id_integrante; ?></td>
+						<td><?php echo $nombre; ?></td>
 						<td ><?php echo $dni; ?></td>
-                        <td ><?php echo $edad; ?></td>
-                        <td ><?php echo $domicilio; ?></td>
-                        <td ><?php echo $telefono; ?></td>
-                        <td ><?php echo $vinculo_nombre; ?></td>
-                        <td ><?php echo $estado_salud; ?></td>
-                        <td ><?php echo $asistencia; ?></td>
-                        <td ><?php echo $id_cliente; ?></td>
-                        <td ><?php echo $date_added; ?></td>
-            
-            
-            
-					<!-- Modificacion de DATOS FALTA -->	
-						
-					<td class='text-right'>
+            <td ><?php echo $edad; ?></td>
+            <td ><?php echo $domicilio; ?></td>
+            <td ><?php echo $telefono; ?></td>
+            <td ><?php echo $vinculo_nombre; ?></td>
+            <td ><?php echo $estado_salud; ?></td>
+            <td ><?php echo $asistencia; ?></td>
+            <td ><?php echo $id_cliente; ?></td>
+            <td ><?php echo $date_added; ?></td>
+						<td class='text-right'>
 						<a href="#" class='btn btn-default' title='Editar integrante' 
 						data-domicilio = '<?php echo $domicilio;?>' 
 						data-nombre = '<?php echo $nombre;?>' 
 						data-dni = '<?php echo $dni?>' 
-						data-id = '<?php echo $id;?>' 
-						data-localidad = '<?php echo $localidad;?>' 
+						data-id = '<?php echo $id_integrante;?>' 
 						data-telefono = '<?php echo $telefono;?>' 
-						data-email = '<?php echo $email;?>' 
-						data-email_alternativo = '<?php echo $email_alternativo;?>' 
-						data-patente = '<?php echo $patente;?>' 
-						data-pago = '<?php echo $pago;?>' 
-						data-carpa = '<?php echo $idCarpa;?>' 
-						data-contrato = '<?php echo $contrato;?>' 
-						data-cochera1 = '<?php echo $cochera1;?>' 
-						data-cochera2 = '<?php echo $cochera2;?>' 
 						data-toggle = "modal" 
-						data-target = "#editClient"><i class="glyphicon glyphicon-edit"></i></a> 
-						<a href="#" class='btn btn-default' title='Borrar cliente' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
+						data-target = "#editIntegrante"><i class="glyphicon glyphicon-edit"></i></a> 
+						<a href="#" class='btn btn-default' title='Borrar integrante' onclick="eliminar('<?php echo $id_integrante; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
 					</td>
 						
 					</tr>

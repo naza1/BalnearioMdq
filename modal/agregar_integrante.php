@@ -25,19 +25,13 @@
           <div class="form-group">
             <label for="documento" class="col-sm-3 control-label">Edad</label>
             <div class="col-sm-6">
-              <input type="number" name="documento" class="form-control" id="documento" value="" placeholder="Años de Edad" required="">
+              <input type="number" name="edad" class="form-control" id="edad" value="" placeholder="Años de Edad" required="">
             </div>
           </div>
           <div class="form-group">
             <label for="direccion" class="col-sm-3 control-label">Dirección</label>
             <div class="col-sm-6">
               <input type="text" name="direccion" class="form-control" id="direccion" value="" placeholder="Domicilio" required="">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="localidad" class="col-sm-3 control-label">Localidad</label>
-            <div class="col-sm-6">
-              <input type="text" name="localidad" class="form-control" id="localidad" value="" placeholder="Localidad" required="">
             </div>
           </div>
           <div class="form-group">
@@ -83,7 +77,7 @@
           <div class="form-group">
 				    <label for="nombre" class="col-sm-3 control-label">Observaciones</label>
 				    <div class="col-sm-8">
-					    <textarea class="form-control" id="patente" name="patente" placeholder="Detalle" required maxlength="355" ></textarea>
+					    <textarea class="form-control" id="observaciones" name="observaciones" placeholder="Detalle" required maxlength="355" ></textarea>
 				    </div>
 			    </div>
            <div class="form-group">

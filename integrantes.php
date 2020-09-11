@@ -49,10 +49,10 @@
 							<option value="">Seleccione un Integrante</option>
 							
 							<?php 
-							$query_cliente=mysqli_query($conn,"select * from integrantes_carpa order by Id");
+							$query_cliente=mysqli_query($conn,"select * from integrantes order by Id");
 							while($rw=mysqli_fetch_array($query_cliente))	{
 								?>
-							<option value="<?php echo $rw['Id_integrantes'];?>"><?php echo $rw['nombres'];?></option>
+							<option value="<?php echo $rw['Id'];?>"><?php echo $rw['nombres'];?></option>
 								<?php
 							}
 							?>
@@ -62,7 +62,7 @@
 					<div class='col-md-4'>
 						<label>TOTAL DE INTEGRANTES POR TITULAR</label>
 						<?php
-							$query_cliente1=mysqli_query($conn,"select * from integrantes_carpa");
+							$query_cliente1=mysqli_query($conn,"select * from integrantes");
 						?>
 						<br><label><?php echo $query_cliente1->num_rows;?></label>
 					</div>
