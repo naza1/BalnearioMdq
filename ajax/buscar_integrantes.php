@@ -57,7 +57,6 @@
 				<tr  class="success">
           <th>Nro</th>
 					<th>Nombre</th>
-					<th>Documento</th>
           <th>D.N.I</th>
           <th>Edad</th>
 					<th>Domicilio</th>
