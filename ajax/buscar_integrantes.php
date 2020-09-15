@@ -71,7 +71,7 @@
 				<?php
 				while ($row = mysqli_fetch_array($query)){
 						$id_integrante = $row['Id'];
-						$nombre = $row['nombres'];
+						$nombre = $row['nombre'];
 						$dni = $row['dni'];
 						$edad = $row['edad'];
 						$domicilio = $row['domicilio'];
