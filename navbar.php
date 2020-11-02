@@ -22,13 +22,14 @@
        
         <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="cocheras.php"><i class='glyphicon glyphicon-road'></i> Cocheras</a></li>
         <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="clientes.php"><i class='glyphicon glyphicon-user'></i> Clientes</a></li>
-        <li class="<?php if (isset($active_usuarios)){echo $active_usuarios;}?>"><a href="integrantes.php"><i  class='glyphicon glyphicon-copy'></i> Integrantes Carpa</a></li> 
+        <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="./facturacion/"><i  class='glyphicon glyphicon-list-alt'></i> Movimientos</a></li> 
+        <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="integrantes.php"><i  class='glyphicon glyphicon-copy'></i> Integrantes Carpa</a></li> 
         <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" class='glyphicon glyphicon-cog'></i>Configuracion
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li class="<?php if (isset($active_usuarios)){echo $active_usuarios;}?>"><a href="empresa.php"><i  class='glyphicon glyphicon-briefcase'></i> Empresa</a></li>
-          <li class="<?php if (isset($active_usuarios)){echo $active_usuarios;}?>"><a href="usuarios.php"><i  class='glyphicon glyphicon-log-in'></i> Usuarios</a></li>
+          <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="descargas.php"><i  class='glyphicon glyphicon-save'></i> Descargas</a></li>
+          <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="usuarios.php"><i  class='glyphicon glyphicon-log-in'></i> Usuarios</a></li>
           
           <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="pasillos.php"><i class='glyphicon glyphicon-th-list'></i> Pasillos</a></li>         
           <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="contratos.php"><i class='glyphicon glyphicon-calendar'></i> Tipos de Contratos</a></li>
@@ -44,8 +45,8 @@
 		
        </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="<?php if (isset($active_usuarios)){echo $active_usuarios;}?>"><a href="perfil.php"><i  class='glyphicon glyphicon-list-alt'></i> Perfil</a></li>
-        <li><a href="" target='_blank'><i class='glyphicon glyphicon-envelope'></i> Soporte</a></li>
+        <li class="<?php if (isset($active_usuarios))c?>"><a href="perfil.php"><i  class='glyphicon glyphicon-briefcase'></i> Empresa</a></li>
+      <li><a href="#soporteModal" role="button" class="btn btn-large btn-primary" data-toggle="modal">Soporte</a></li>
 		<li><a href="login.php?logout"><i class='glyphicon glyphicon-off'></i> Salir</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->

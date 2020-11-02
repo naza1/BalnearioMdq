@@ -34,10 +34,10 @@
 		$direccion = mysqli_real_escape_string($conn,(strip_tags($_POST["direccion"],ENT_QUOTES)));
 		$telefono = mysqli_real_escape_string($conn,(strip_tags($_POST["telefono"],ENT_QUOTES)));
 		$createdAt = date("Y-m-d H:i:s");
-		$idVinculo = mysqli_real_escape_string($conn,(strip_tags($_POST["id_vinculo"],ENT_QUOTES)));
-		$id_estado = mysqli_real_escape_string($conn,(strip_tags($_POST["id_estado"],ENT_QUOTES)));
+		$vinculo_nombre = mysqli_real_escape_string($conn,(strip_tags($_POST["vinculo_nombre"],ENT_QUOTES)));
+		$estado_salud = mysqli_real_escape_string($conn,(strip_tags($_POST["estado_salud"],ENT_QUOTES)));
 		$observaciones = mysqli_real_escape_string($conn,(strip_tags($_POST["observaciones"],ENT_QUOTES)));
-		$id_asistencia = mysqli_real_escape_string($conn,(strip_tags($_POST["id_asistencia"],ENT_QUOTES)));
+		$asistencia_nombre = mysqli_real_escape_string($conn,(strip_tags($_POST["asistencia_nombre"],ENT_QUOTES)));
 		$cliente_id = mysqli_real_escape_string($conn,(strip_tags($_POST["cliente_id"],ENT_QUOTES)));
 
 		$integrante->nombre = $name;
@@ -46,10 +46,10 @@
 		$integrante->edad = $edad;
 		$integrante->telefono = $telefono;
 		$integrante->date_added = $createdAt;
-		$integrante->vinculo_nombre = $idVinculo;
-		$integrante->estado_salud = $id_estado;
+		$integrante->vinculo_nombre = $vinculo_nombre;
+		$integrante->estado_salud = $estado_salud;
 		$integrante->observaciones = $observaciones;
-		$integrante->asistencia = $id_asistencia;
+		$integrante->asistencia = $asistencia_nombre;
 		$integrante->_id_cliente = $cliente_id;
 		
 		$id = R::store($integrante);

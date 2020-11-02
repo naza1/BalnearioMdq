@@ -58,10 +58,12 @@
 			<div class="table-responsive">
 			  <table class="table">
 				<tr  class="success">
-          <th>Nro</th>
+                   <th>Nro</th>
 					<th>Nombre</th>
+					<th>Carpa</th>
 					<th>Documento</th>
-          <th>Email</th>
+					<th>Telefono</th>
+                    <th>Email</th>
 					<th>Agregado</th>
 					<th class='text-right'>Acciones</th>
 					
@@ -70,7 +72,7 @@
 				while ($row = mysqli_fetch_array($query)){
 						$id = $row['Id'];
 						$nombre = $row['_nombre'];
-            $dni = $row['_dni'];
+                        $dni = $row['_dni'];
 						$email = $row['_email'];
 						$domicilio = $row['_domicilio'];
 						$localidad = $row['_localidad'];
@@ -86,10 +88,12 @@
 						
 					?>
 					<tr>
-            <td><?php echo $id; ?></td>
+                        <td><?php echo $id; ?></td>
 						<td><?php echo $nombre; ?></td>
+						<td><?php echo$idCarpa; ?></td>
 						<td ><?php echo $dni; ?></td>
-            <td ><?php echo $email; ?></td>
+						<td ><?php echo $telefono;?></td> 
+                        <td ><?php echo $email; ?></td>
 						<td><?php echo $date_added;?></td>
 						
 					<td class='text-right'>
@@ -109,8 +113,10 @@
 						data-cochera1 = '<?php echo $cochera1;?>' 
 						data-cochera2 = '<?php echo $cochera2;?>' 
 						data-toggle = "modal" 
-						data-target = "#editClient"><i class="glyphicon glyphicon-edit"></i></a> 
-						<a href="#" class='btn btn-default' title='Borrar cliente' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
+						data-target = "#editClient"><i class="glyphicon glyphicon-search"></i></a> 
+						
+					    <a href="#" class='btn btn-default' title='Generar Proforma' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-print"></i> </a>
+					    <a href="#" class='btn btn-default' title='Borrar cliente' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a> 
 					</td>
 						
 					</tr>

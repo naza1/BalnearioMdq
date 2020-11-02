@@ -35,25 +35,69 @@
 		<div class="panel-heading">
 		    <div class="btn-group pull-right">
 			<button type='button' class="btn btn btn-danger" data-toggle="modal" data-target="#resetcarpas"><span class="glyphicon glyphicon-off" ></span> FIN DEL DIA</button> 
-		<!-- Modal Reset-->
+			<!-- Modal Reset-->
 <div class="modal fade" id="resetcarpas" tabindex="-1" role="dialog" aria-labelledby="resetacarpasLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">CONTADOR A CERO OCUPANTES DE TODAS LAS CARPAS</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+       <center> <img src="img/alerta.png" style="width:100px;height:100px" align="middle"; /> 
+       <br>
+          <h3 class="modal-title" id="exampleModalLabel">CONTADOR A CERO</h3></center >
+          <br>
+       
       </div>
 			<form id="formReset" method="POST">
       	<div id="modal-reset" class="modal-body">
-					<p class="text-warning">RECUERDE !!!</p>
-					<h5 class="modal-title" id="exampleModalLabel">Ingrese Contraseña Administrador</h5>
+					<h4 style="text-align:justify">RECUERDE QUE, AL CONFIRMAR ESTA ACCION QUEDARAN EN CERO LA OCUPACION ACTUAL TODAS LAS CARPAS DEL BALNEARIO.</h4>
+					<br>
+					 <span aria-hidden="true"></span>
+					<h5  style="text-align:center" class="modal-title" id="exampleModalLabel">INGRESE CONTRASEÑA ADMINISTRADOR</h5>
         	<input class="form-control" id="user_password" placeholder="Contraseña" name="user_password" type="password" autocomplete="off" required>
+      	
       	</div>
+      	
       	<div class="modal-footer">
         	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         	<button type="submit" class="btn btn-danger">Confirmar</button>
+      	</div>
+			</form>
+    </div>
+  </div>
+</div>
+		<!-- Modal Soporte-->
+<div class="modal fade" id="soporteModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+       
+         <center> <h3 class="modal-title" id="exampleModalLabel">MESA DE AYUDA  </h3></center>
+         
+      </div>
+			<form id="formReset" method="POST">
+      	<div id="modal-reset" class="modal-body">
+					<h4 style="text-align:center">Horario de Atencion </h4>
+					<h4 style="text-align:center">Lunes a Viernes 08:00 hs. a 18:00 hs.</h4>
+					<h4 style="text-align:center">Sabado y Domingo (Emergencias)  10:00 hs. a 18:00 hs.</h4>
+					<br>
+					<center><h4><i class='glyphicon glyphicon-phone'></i> 2235985815 </h4> 
+					<h4><i class='glyphicon glyphicon-envelope'></i> <a href="mail to:info@controlbeach.com.ar" target="_blank"> info@controlbeach.com.ar </a> </h4> 
+					<h4><i class='glyphicon glyphicon-globe'></i> <a href="www.controlbeach.com.ar" target="_blank"> www.controlbeach.com.ar</a></h4> </center>
+				
+					
+					 <span aria-hidden="true"></span>
+					
+      	
+      	</div>
+      	
+      	<div class="modal-footer">
+        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        	
       	</div>
 			</form>
     </div>

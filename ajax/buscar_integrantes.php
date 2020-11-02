@@ -55,16 +55,18 @@
 			<div class="table-responsive">
 			  <table class="table">
 				<tr  class="success">
-          <th>Nro</th>
+                    <th>Nro</th>
 					<th>Nombre</th>
-          <th>D.N.I</th>
-          <th>Edad</th>
+                    <th>D.N.I</th>
+                     <th>Edad</th>
 					<th>Domicilio</th>
 					<th>Telefono</th>
 					<th>Vinculo</th>
 					<th>Salud</th>
 					<th>Asistencia</th>
+					
 					<th>Cliente</th>
+					<th>Fecha</th>
 					<th class='text-right'>Acciones</th>
 				</tr>
 				<?php
@@ -83,17 +85,17 @@
 						
 					?>
 					<tr>
-            <td><?php echo $id_integrante; ?></td>
+                        <td><?php echo $id_integrante; ?></td>
 						<td><?php echo $nombre; ?></td>
 						<td ><?php echo $dni; ?></td>
-            <td ><?php echo $edad; ?></td>
-            <td ><?php echo $domicilio; ?></td>
-            <td ><?php echo $telefono; ?></td>
-            <td ><?php echo $vinculo_nombre; ?></td>
-            <td ><?php echo $estado_salud; ?></td>
-            <td ><?php echo $asistencia; ?></td>
-            <td ><?php echo $id_cliente; ?></td>
-            <td ><?php echo $date_added; ?></td>
+                       <td ><?php echo $edad; ?></td>
+                       <td ><?php echo $domicilio; ?></td>
+                       <td ><?php echo $telefono; ?></td>
+                       <td ><?php echo $vinculo_nombre; ?></td>
+                       <td ><?php echo $estado_salud; ?></td>
+                      <td ><?php echo $asistencia; ?></td>
+                      <td ><?php echo $id_cliente; ?></td>
+                           <td ><?php echo $date_added; ?></td>
 						<td class='text-right'>
 						<a href="#" class='btn btn-default' title='Editar integrante' 
 						data-domicilio = '<?php echo $domicilio;?>' 

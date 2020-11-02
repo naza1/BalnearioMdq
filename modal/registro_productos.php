@@ -8,7 +8,7 @@
 		<div class="modal-content">
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h4 class="modal-title" id="myModalLabel"><i class='glyphicon glyphicon-edit'></i> Agregar nueva Carpa</h4>
+			<h4 class="modal-title" id="myModalLabel"><i class='glyphicon glyphicon-edit'></i> Agregar nuevo producto</h4>
 		  </div>
 		  <div class="modal-body">
 			<form class="form-horizontal" method="post" id="guardar_producto" name="guardar_producto">
@@ -29,36 +29,21 @@
 			  </div>
 			  
 			  <div class="form-group">
-				<label for="categoria" class="col-sm-3 control-label">Categoría</label>
+				<label for="estado" class="col-sm-3 control-label">Estado</label>
 				<div class="col-sm-8">
-					<select class='form-control' name='categoria' id='categoria' required>
-						<option value="">Selecciona una categoría</option>
-							<?php 
-							$query_categoria=mysqli_query($conn,"select * from categorias order by nombre_categoria");
-							while($rw=mysqli_fetch_array($query_categoria))	{
-								?>
-							<option value="<?php echo $rw['id_categoria'];?>"><?php echo $rw['nombre_categoria'];?></option>			
-								<?php
-							}
-							?>
-					</select>			  
+				 <select class="form-control" id="estado" name="estado" required>
+					<option value="">-- Selecciona estado --</option>
+					<option value="1" selected>Activo</option>
+					<option value="0">Inactivo</option>
+				  </select>
 				</div>
-			
 			  </div>
-			  
-			<div class="form-group">
+			  <div class="form-group">
 				<label for="precio" class="col-sm-3 control-label">Precio</label>
 				<div class="col-sm-8">
 				  <input type="text" class="form-control" id="precio" name="precio" placeholder="Precio de venta del producto" required pattern="^[0-9]{1,5}(\.[0-9]{0,2})?$" title="Ingresa sólo números con 0 ó 2 decimales" maxlength="8">
 				</div>
-			</div>
-			
-			<div class="form-group">
-				<label for="stock" class="col-sm-3 control-label">Stock</label>
-				<div class="col-sm-8">
-				  <input type="number" min="0" class="form-control" id="stock" name="stock" placeholder="Inventario inicial" required  maxlength="8">
-				</div>
-			</div>
+			  </div>
 			 
 			 
 			

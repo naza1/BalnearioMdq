@@ -73,7 +73,8 @@
 					<th class='text-center'>Detalle</th>
 					<th class='text-center'>Contrato</th>
 					<th class='text-center'>Estado</th>		
-					<th class='text-center'>Titular</th>
+					<th class='text-center'>Nro. Cliente.</th>
+					<th class='text-center'>Nombre y Apellido.</th>
 					<th class='text-center'>Ocup.Actual (<?php echo $a['suma'] ?? 0;?>)</th>
 					
 					<th class='text-center'>Acciones</th>
@@ -89,6 +90,7 @@
 						$tipo_contrato=$row['tipo_contrato'];
 					    $tipo_estado=$row['tipo_estado'];
 						$id_cliente=$row['_id_cliente'];
+						$_nombre=$row['_nombre'];
 						$ocupacion_actual=$row['ocupacion_actual'];
 						$ocupacionTotal += $ocupacion_actual;
 					?>
@@ -100,6 +102,7 @@
 						<td class='text-center'><?php echo $tipo_contrato; ?></td>
 						<td class='text-center'><?php echo $tipo_estado; ?></td>
 						<td class='text-center'><?php echo $id_cliente; ?></td>
+						<td class='text-center'><?php echo $_nombre; ?></td>
 						<td class='text-center'><?php echo $ocupacion_actual; ?></td>
 					
 						
