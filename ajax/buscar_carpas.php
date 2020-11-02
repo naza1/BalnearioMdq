@@ -88,9 +88,8 @@
 						$id_pasillo=$row['id_pasillo'];
 						$detalle_carpa=$row['detalle_carpa'];
 						$tipo_contrato=$row['tipo_contrato'];
-					    $tipo_estado=$row['tipo_estado'];
+					  $tipo_estado=$row['tipo_estado'];
 						$id_cliente=$row['_id_cliente'];
-						$_nombre=$row['_nombre'];
 						$ocupacion_actual=$row['ocupacion_actual'];
 						$ocupacionTotal += $ocupacion_actual;
 					?>
@@ -102,7 +101,6 @@
 						<td class='text-center'><?php echo $tipo_contrato; ?></td>
 						<td class='text-center'><?php echo $tipo_estado; ?></td>
 						<td class='text-center'><?php echo $id_cliente; ?></td>
-						<td class='text-center'><?php echo $_nombre; ?></td>
 						<td class='text-center'><?php echo $ocupacion_actual; ?></td>
 					
 						
