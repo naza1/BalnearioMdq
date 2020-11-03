@@ -1,9 +1,4 @@
 <?php
-	/*-------------------------
-	Autor: Obed Alvarado
-	Web: obedalvarado.pw
-	Mail: info@obedalvarado.pw
-	---------------------------*/
 	session_start();
 	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: login.php");
@@ -20,7 +15,7 @@
 	$active_perfil="active";	
 	$title="Configuración | Empresa";
 	
-	$query_empresa=mysqli_query($con,"select * from perfil where id_perfil=1");
+	$query_empresa=mysqli_query($conn,"select * from perfil where id_perfil=1");
 	$row=mysqli_fetch_array($query_empresa);
 ?>
 <!DOCTYPE html>
