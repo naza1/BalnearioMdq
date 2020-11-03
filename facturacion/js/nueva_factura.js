@@ -78,7 +78,20 @@
 			  $("#nombre_cliente").focus();
 			  return false;
 		  }
-		 VentanaCentrada('./pdf/documentos/factura_pdf.php?id_cliente='+id_cliente+'&id_vendedor='+id_vendedor+'&condiciones='+condiciones,'Factura','','1024','768','true');
+		 //VentanaCentrada('./pdf/documentos/factura_pdf.php?id_cliente='+id_cliente+'&id_vendedor='+id_vendedor+'&condiciones='+condiciones,'Factura','','1024','768','true');
+		 var parametros = $(this).serialize();
+		 $.ajax({
+			data: parametros,
+			url:'./ajax/generate_pdf.php',
+			 beforeSend: function(objeto){
+			 $('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
+			},
+			success:function(data){
+				$(".outer_div").html(data).fadeIn('slow');
+				$('#loader').html('');
+				
+			}
+		})
 	 	});
 		
 		$( "#guardar_cliente" ).submit(function( event ) {
