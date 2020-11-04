@@ -117,6 +117,22 @@
 						
 					    <a href="#" class='btn btn-default' title='Generar Proforma' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-print"></i> </a>
 					    <a href="#" class='btn btn-default' title='Borrar cliente' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a> 
+					    
+					   <?php
+
+                       
+						$html=""; //Vamos a concatenar con esta variable
+						if( $telefono ) {
+                        $html.='<a class="button" href="http://api.whatsapp.com/send?phone='.$telefono.'">Whatsapp</a>';
+
+                       
+                        }else{
+                        $html.="Sin Num."; //Esto es opcional
+} 
+echo $html;
+
+?>
+
 					</td>
 						
 					</tr>
