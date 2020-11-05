@@ -38,7 +38,7 @@
 			include("modal/registro_clientes.php");
 			include("modal/registro_productos.php");
 		?>
-			<form class="form-horizontal" role="form" id="datos_factura" action="ajax/generate_pdf.php">
+			<form class="form-horizontal" role="form" id="datos_factura" >
 				<div class="form-group row">
 				  <label for="nombre_cliente" class="col-md-1 control-label">Cliente</label>
 				  <div class="col-md-3">
