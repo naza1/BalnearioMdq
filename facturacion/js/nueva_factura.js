@@ -80,14 +80,17 @@
 		  }
 		 var parametros = $(this).serialize();
 		$.ajax({
-			data: parametros,
+
+
 			url:'./ajax/generate_pdf.php',
 			 beforeSend: function(objeto){
 			 $('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
 			},
 			success:function(data){
 				$(".outer_div").html(data).fadeIn('slow');
+
 				$('#loader').html('');
+
 			}
 		})
 	});
