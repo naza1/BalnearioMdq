@@ -40,27 +40,18 @@
 			<form class="form-horizontal" role="form" id="datos">
 				<div class="row">
 					<div class='col-md-4'>
-						<label>Filtrar por Nro. de integrante</label>
+						<label>Filtrar por Nro. de Cliente</label>
 						<input type="text" class="form-control" id="q" placeholder="Ingrese Numero" onkeyup='load(1);'>
 					</div>
+			
+			
+			
+			<form class="form-horizontal" role="form" id="datos">
+				<div class="row">
+					
+					
 					<div class='col-md-4'>
-						<label>Filtrar por Cliente</label>
-						<select class='form-control' name='integrante_id' id='integrante_id' onchange="load(1);">
-							<option value="">Seleccione un Integrante</option>
-							
-							<?php 
-							$query_cliente=mysqli_query($conn,"select * from integrantes order by Id");
-							while($rw=mysqli_fetch_array($query_cliente))	{
-								?>
-							<option value="<?php echo $rw['Id'];?>"><?php echo $rw['nombres'];?></option>
-								<?php
-							}
-							?>
-						</select>
-						
-					</div>
-					<div class='col-md-4'>
-						<label>TOTAL DE INTEGRANTES POR TITULAR</label>
+						<label>TOTAL DE INTEGRANTES </label>
 						<?php
 							$query_cliente1=mysqli_query($conn,"select * from integrantes");
 						?>

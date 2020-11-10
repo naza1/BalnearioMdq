@@ -29,6 +29,8 @@
 		<div class="panel-heading">
 		    <div class="btn-group pull-right">
 				<button type='button' class="btn btn-success" data-toggle="modal" data-target="#nuevoCliente"><span class="glyphicon glyphicon-plus" ></span> Agregar Cliente</button>
+				
+				
 			</div>
 			<h4><i class='glyphicon glyphicon-search'></i> CLIENTES</h4>
 		</div>
@@ -43,13 +45,14 @@
 						<label>Filtrar por Nro. de Cliente</label>
 						<input type="text" class="form-control" id="q" placeholder="Ingrese Numero" onkeyup='load(1);'>
 					</div>
+					
 					<div class='col-md-4'>
 						<label>Filtrar por Cliente</label>
 						<select class='form-control' name='cliente_id' id='cliente_id' onchange="load(1);">
 							<option value="">Seleccione un cliente</option>
 							
 							<?php 
-							$query_cliente=mysqli_query($conn,"select * from clientes order by Id");
+							$query_cliente=mysqli_query($conn,"select * from clientes order by _nombre");
 							while($rw=mysqli_fetch_array($query_cliente))	{
 								?>
 							<option value="<?php echo $rw['Id'];?>"><?php echo $rw['_nombre'];?></option>
@@ -87,6 +90,10 @@
 	include("footer.php");
 	?>
 	<script type="text/javascript" src="js/clientes.js"></script>
+	
+	
+	
+  </body>
   </body>
 </html>
 <script>

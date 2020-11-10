@@ -8,8 +8,8 @@
 	if($action == 'ajax'){
 		// escaping, additionally removing everything that could be (html/javascript-) code
 		 $q = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		 $cliente_id = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['integrante_id'], ENT_QUOTES)));
-		 $aColumns = array('Id');//Columnas de busqueda
+		 $integrante_id = mysqli_real_escape_string($conn,(strip_tags($_REQUEST['integrante_id'], ENT_QUOTES)));
+		 $aColumns = array('_id_cliente');//Columnas de busqueda
 		 $sTable = "integrantes";
 		 $sWhere = "";
 		if ( $_GET['q'] != "" )
@@ -35,7 +35,7 @@
 			}
 
 		}
-		$sWhere.=" order by Id";
+		$sWhere.=" order by _id_cliente";
 		include 'pagination.php'; //include pagination file
 		//pagination variables
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;

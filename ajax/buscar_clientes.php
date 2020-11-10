@@ -64,13 +64,13 @@
 					<th>Documento</th>
 					<th>Telefono</th>
                     <th>Email</th>
-					<th>Agregado</th>
-					<th class='text-right'>Acciones</th>
+					<th>Agregado</th>					
+					<th class='text-center'>Acciones</th>
 					
 				</tr>
 				<?php
 				while ($row = mysqli_fetch_array($query)){
-						$id = $row['Id'];
+						
 						$nombre = $row['_nombre'];
                         $dni = $row['_dni'];
 						$email = $row['_email'];
@@ -96,8 +96,11 @@
                         <td ><?php echo $email; ?></td>
 						<td><?php echo $date_added;?></td>
 						
-					<td class='text-right'>
-						<a href="#" class='btn btn-default' title='Editar cliente' 
+			
+						
+						
+						<td class='text-right'>
+						<a href="#" class='btn btn-default' title='Tarjeta' 
 						data-domicilio = '<?php echo $domicilio;?>' 
 						data-nombre = '<?php echo $nombre;?>' 
 						data-dni = '<?php echo $dni?>' 
@@ -115,7 +118,8 @@
 						data-toggle = "modal" 
 						data-target = "#editClient"><i class="glyphicon glyphicon-search"></i></a> 
 						
-					    <a href="#" class='btn btn-default' title='Generar Proforma' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-print"></i> </a>
+						
+					  
 					    <a href="#" class='btn btn-default' title='Borrar cliente' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a> 
 					    
 					   <?php

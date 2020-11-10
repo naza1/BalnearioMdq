@@ -5,7 +5,7 @@
 	<!-- Modal -->
 	<div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog" role="document">
-		  <div class="modal-content">
+		  <div class="modal-content" id="imprimeme">
 		    <div class="modal-header">
 			    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			    <h4 class="modal-title" id="myModalLabel"><i class='glyphicon glyphicon-edit'></i> Editar Cliente</h4>
@@ -136,12 +136,38 @@
 		        <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 			        <button type="submit" class="btn btn-primary" id="actualizar_datos">Actualizar datos</button>
+			         <button type="submit" class="btn btn-warning" id="actualizar_datos">Credencial</button>
+
 		        </div>
 		      </form>
         </div>
 		  </div>
 	  </div>
 	</div>
+	
+	
+	
+	
 	<?php
 		}
 	?>
+
+
+
+<script>
+	function imprimir(){
+  var objeto=document.getElementById('imprimeme');  //obtenemos el objeto a imprimir
+  var ventana=window.open('','_blank');  //abrimos una ventana vacía nueva
+  ventana.document.write(objeto.innerHTML);  //imprimimos el HTML del objeto en la nueva ventana
+  ventana.document.close();  //cerramos el documento
+  ventana.print();  //imprimimos la ventana
+  ventana.close();  //cerramos la ventana
+}
+
+
+
+
+
+
+
+</script>

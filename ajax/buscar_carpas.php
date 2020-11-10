@@ -74,7 +74,7 @@
 					<th class='text-center'>Contrato</th>
 					<th class='text-center'>Estado</th>		
 					<th class='text-center'>Nro. Cliente.</th>
-					<th class='text-center'>Nombre y Apellido.</th>
+			
 					<th class='text-center'>Ocup.Actual (<?php echo $a['suma'] ?? 0;?>)</th>
 					
 					<th class='text-center'>Acciones</th>
@@ -88,7 +88,7 @@
 						$id_pasillo=$row['id_pasillo'];
 						$detalle_carpa=$row['detalle_carpa'];
 						$tipo_contrato=$row['tipo_contrato'];
-					  $tipo_estado=$row['tipo_estado'];
+					    $tipo_estado=$row['tipo_estado'];
 						$id_cliente=$row['_id_cliente'];
 						$ocupacion_actual=$row['ocupacion_actual'];
 						$ocupacionTotal += $ocupacion_actual;
