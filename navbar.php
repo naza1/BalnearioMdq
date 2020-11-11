@@ -28,6 +28,7 @@
         <a class="dropdown-toggle" data-toggle="dropdown" class='glyphicon glyphicon-cog'></i>Configuracion
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
+			<li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="#"><i  class='glyphicon glyphicon-credit-card'></i> Credencial</a></li>
 			<li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="listados.php"><i  class='glyphicon glyphicon-print'></i> Listados</a></li>
           <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="descargas.php"><i  class='glyphicon glyphicon-save'></i> Descargas</a></li>
           <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="usuarios.php"><i  class='glyphicon glyphicon-log-in'></i> Usuarios</a></li>

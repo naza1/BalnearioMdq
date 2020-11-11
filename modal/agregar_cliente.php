@@ -55,19 +55,20 @@
           <div class="form-group">
             <label for="nroCarpa" class="col-sm-3 control-label">Nro. de Carpa</label>
             <div class="col-sm-6">
-              <select class='form-control' name='id_carpa' id='id_carpa' required="" onchange="load(1);">
+              <select class='form-control' name='id_carpa' id='id_carpa' required="" onchange="load(1);">  
                 <option value="">Selecciona</option>
 							  <?php
 							    $query_cliente = mysqli_query($conn,"select * from carpas order by Id");
 							    while($rw=mysqli_fetch_array($query_cliente))	{
 							  ?>
-							  <option value="<?php echo $rw['Id'];?>"><?php echo $rw['Id'];?></option>
+							  <option value="<?php echo $rw['Id'];?>"><?php echo $rw['Id'];?>  <?php echo $rw['tipo_estado'];?> <?php echo $rw['tipo_contrato'];?></option>
 							  <?php
 							  }
 							  ?>
 						  </select>
 				    </div>
           </div>
+         
           <div class="form-group">
 				    <label for="contrato" class="col-sm-3 control-label">Contrato</label>
 				    <div class="col-sm-6">
@@ -99,7 +100,7 @@
 							      $query_cocheras=mysqli_query($conn,"select * from cocheras order by id_cocheras");
 							      while($rw=mysqli_fetch_array($query_cocheras))	{
 								  ?>
-							    <option value="<?php echo $rw['id_cocheras'];?>"><?php echo $rw['id_cocheras'];?></option>
+							    <option value="<?php echo $rw['id_cocheras'];?>"><?php echo $rw['id_cocheras'];?> <?php echo $rw['tipo_contrato'];?></option>
 								  <?php
 							      }
 							    ?>
@@ -115,7 +116,7 @@
 							      $query_cocheras=mysqli_query($conn,"select * from cocheras order by id_cocheras");
 							      while($rw=mysqli_fetch_array($query_cocheras))	{
 								  ?>
-							    <option value="<?php echo $rw['id_cocheras'];?>"><?php echo $rw['id_cocheras'];?></option>
+							    <option value="<?php echo $rw['id_cocheras'];?>"><?php echo $rw['id_cocheras'];?> <?php echo $rw['tipo_contrato'];?></option>
 								  <?php
 							      }
 							    ?>

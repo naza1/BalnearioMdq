@@ -55,8 +55,13 @@
     <tr>
       <th scope="row"style="text-align: center">1</th>
       <td>CLIENTES</td>
-      <td>NOMINA TOTAL DE CLIENTES INGRESADOS AL SISTEMA</td>
+      <td>NOMINA TOTAL DE CLIENTES INGRESADOS AL SISTEMA (ALFABETICO)</td>
        <td style="text-align: center"><a href="pdf/clientes/listadoclientes.php" target="_blank" class='btn btn-success' title='Descargar'><i class="glyphicon glyphicon-print"></i> </a></td></td>
+    </tr>
+     <th scope="row"style="text-align: center">1</th>
+      <td>CLIENTES</td>
+      <td>NOMINA TOTAL DE CLIENTES INGRESADOS AL SISTEMA (POR NRO. DE CARPA)</td>
+       <td style="text-align: center"><a href="pdf/clientescarpa/listadoclientescarpa.php" target="_blank" class='btn btn-success' title='Descargar'><i class="glyphicon glyphicon-print"></i> </a></td></td>
     </tr>
     <tr>
       <th scope="row"style="text-align: center">2</th>

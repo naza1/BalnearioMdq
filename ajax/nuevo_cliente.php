@@ -65,11 +65,20 @@
 			$messages[] = "El cliente ha sido grabado satisfactoriamente.";
 			$sqlCarpa = "UPDATE carpas SET _id_cliente='".$id."' WHERE Id='".$nroCarpa."'";
 			R::exec($sqlCarpa);
+			$sqlCarpa1 = "UPDATE carpas SET  tipo_contrato='".$contrato."' WHERE Id='".$nroCarpa."'";
+			R::exec($sqlCarpa1);
+			$sqlCarpa2 = "UPDATE carpas SET  tipo_estado='ALQUILADA' WHERE Id='".$nroCarpa."'";
+			R::exec($sqlCarpa2);
 			$sqlCochera1 = "UPDATE cocheras SET id_cliente='".$id."' WHERE id_cocheras='".$idCochera1."'";
 			R::exec($sqlCochera1);
-			$sqlCochera2 = "UPDATE cocheras SET id_cliente='".$id."' WHERE id_cocheras='".$idCochera2."'";
+			$sqlCochera2 = "UPDATE cocheras SET tipo_contrato='".$contrato."' WHERE id_cocheras='".$idCochera1."'";
 			R::exec($sqlCochera2);
+			$sqlCochera3 = "UPDATE cocheras SET id_cliente='".$id."' WHERE id_cocheras='".$idCochera2."'";
+			R::exec($sqlCochera3);
+	        $sqlCochera4 = "UPDATE cocheras SET tipo_contrato='".$contrato."' WHERE id_cocheras='".$idCochera2."'";
+			R::exec($sqlCochera4);	
 		}
+		
 		else
 			$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($conn);
 	}

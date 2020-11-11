@@ -9,7 +9,7 @@
 			$this->Image('images/logo.png', 5, 5, 20 );
 			$this->SetFont('Arial','B',15);
 			$this->Cell(30);
-			$this->Cell(120,10, 'Listado de Clientes',0,0,'C');
+			$this->Cell(120,10, 'Listado de Clientes por Orden Alfabetico',0,0,'C');
 			$this->Ln(20);
 		}
 		

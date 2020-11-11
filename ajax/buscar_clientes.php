@@ -70,7 +70,7 @@
 				</tr>
 				<?php
 				while ($row = mysqli_fetch_array($query)){
-						
+					    $id = $row['Id'];
 						$nombre = $row['_nombre'];
                         $dni = $row['_dni'];
 						$email = $row['_email'];
