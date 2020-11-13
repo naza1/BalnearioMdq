@@ -105,7 +105,7 @@
 </div>
 		
 			</div>
-			<h4><i class='glyphicon glyphicon-home'></i> CARPAS </h4> 
+			<h4><i class='glyphicon glyphicon-home'></i> CARPAS  </h4> 
 		</div>
 		<div class="panel-body">
 			
@@ -141,40 +141,31 @@
 						
 						
 					</div>
-						<div class='col-md-2'>
-						<label>Filtrar x Contrato</label>
-				
-						<select class='form-control' name='id_contrato' id='idcontrato' onchange="load(2);">
-							<option value="">Todos</option>
-							
-							<?php 
-							$query_cliente=mysqli_query($conn,"select * from tipos_contrato order by tipo_contrato");
-							while($rw=mysqli_fetch_array($query_cliente))	{
-								?>
-							<option value="<?php echo $rw['tipo_contrato'];?>"><?php echo $rw['tipo_contrato'];?></option>
-								<?php
-							}
-							?>
-						</select>	
+					<div class='col-md-2 text-center'>
+					<h4 class="text-success">	<label>Total de Carpas
+						<?php
+							$summ = (int)R::getCell('select COUNT(*) from carpas ;');
+						?><p>
+					<?php echo $summ;?></label> </h4>
 						
 						
-					</div>
+					</div>	
 					
 					
 					<div class='col-md-2 text-center'>
-					<h4>	<label>TOTAL CARPAS
+					<h4 class="text-primary">	<label>Carp. Alquiladas
 						<?php
-							$summ = (int)R::getCell('select COUNT(*) from carpas;');
-						?>
+							$summ = (int)R::getCell('select COUNT(*) from carpas where tipo_estado <> "LIBRE";');
+						?><p>
 					<?php echo $summ;?></label> </h4>
 						
 						
 					</div>
 					<div class='col-md-2 text-center'>
-					<h4>	<label>CANT. PERSONAS
+					<h4 class="text-danger">	<label>Cant. Personas 
 						<?php
 							$summ = (int)R::getCell('select SUM(ocupacion_actual) AS value_sum from carpas;');
-						?>
+						?><p>
 						<?php echo $summ;?></label> </h4>
 						<div id="t"></div>
 					</div>

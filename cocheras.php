@@ -8,7 +8,8 @@
 	/* Connect To Database*/
 	require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
-	
+	require 'rb-mysql.php';
+	R::setup('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
 	$active_productos="active";
 	$active_carpas="active";
 	
@@ -39,12 +40,12 @@
 				
 						
 				<div class="row">
-					<div class='col-md-4'>
+					<div class='col-md-3'>
 						<label>Filtrar por Nro. de Cochera</label>
 						<input type="text" class="form-control" id="q" placeholder="Ingrese Numero" onkeyup='load(1);'>
 					</div>
 					
-					<div class='col-md-4'>
+					<div class='col-md-3'>
 						<label>Filtrar por Cochera</label>
 						<select class='form-control' name='id_cocheras' id='id_cocheras' onchange="load(1);">
 							<option value="">Seleccione una Cochera</option>
@@ -59,14 +60,24 @@
 						</select>
 						
 					</div>
-					<div class='col-md-4'>
-						<label class='text-center'> TOTAL DE COCHERAS</label>
+					<div class='col-md-3 text-center'>
+							<h4 class="text-success">	<label>Total de Cocheras
 						<?php
 							$query_cochera1=mysqli_query($conn,"select * from cocheras");
-						?>
-						<br><button type='button' class="btn btn-success" <label class='text-center'><?php echo $query_cochera1->num_rows;?></label> </button>
+						?><p>
+						<label><?php echo $query_cochera1->num_rows;?></label>
 						
 					</div>
+					<div class='col-md-3 text-center'>
+					<h4 class="text-primary">	<label>Cocheras Alquiladas
+						<?php
+							$summ = (int)R::getCell('select COUNT(*) from cocheras where tipo_contrato <> "S/C";');
+						?><p>
+					<?php echo $summ;?></label> </h4>
+						
+						
+					</div>
+					
 					<div class='col-md-12 text-center'>
 						<span id="loader"></span>
 					</div>
