@@ -43,6 +43,28 @@ $( "#add_cliente" ).submit(function( event ) {
   event.preventDefault();
 })
 
+
+function credencial(id)
+{
+  var q= $("#q").val();
+  if (confirm("Realmente deseas generar la CREDENCIA ?")){	
+    $.ajax({
+      type: "GET",
+      url: "./ajax/credencial_cliente.php",
+      data: "id="+id,"q":q,
+      beforeSend: function(objeto){
+      $("#resultados").html("Mensaje: Cargando...");
+    },
+    success: function(datos){
+      $("#resultados").html(datos);
+      load(1);
+    }
+    });
+  }
+}
+
+
+
 function eliminar(id)
 {
   var q= $("#q").val();
@@ -61,6 +83,11 @@ function eliminar(id)
     });
   }
 }
+
+
+
+
+
 
 $('#editClient').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget); // Button that triggered the modal

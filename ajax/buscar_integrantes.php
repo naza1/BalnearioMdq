@@ -62,12 +62,10 @@
 					<th>Domicilio</th>
 					<th>Telefono</th>
 					<th>Vinculo</th>
-					<th>Salud</th>
-					<th>Asistencia</th>
-					
 					<th>Cliente</th>
+					<th>Salud</th>
 					<th>Fecha</th>
-					<th class='text-right'>Acciones</th>
+					<th class='text-center'>Acciones</th>
 				</tr>
 				<?php
 				while ($row = mysqli_fetch_array($query)){
@@ -78,9 +76,10 @@
 						$domicilio = $row['domicilio'];
 						$telefono = $row['telefono'];
 						$vinculo_nombre = $row['vinculo_nombre'];
-						$estado_salud = $row['estado_salud'];
-						$asistencia = $row['asistencia'];
 						$id_cliente = $row['_id_cliente'];
+						$estado_salud = $row['estado_salud'];
+						
+					
 						$date_added = date('d/m/Y', strtotime($row['date_added']));
 						
 					?>
@@ -88,14 +87,15 @@
                         <td><?php echo $id_integrante; ?></td>
 						<td><?php echo $nombre; ?></td>
 						<td ><?php echo $dni; ?></td>
-                       <td ><?php echo $edad; ?></td>
-                       <td ><?php echo $domicilio; ?></td>
-                       <td ><?php echo $telefono; ?></td>
-                       <td ><?php echo $vinculo_nombre; ?></td>
-                       <td ><?php echo $estado_salud; ?></td>
-                      <td ><?php echo $asistencia; ?></td>
-                      <td ><?php echo $id_cliente; ?></td>
-                           <td ><?php echo $date_added; ?></td>
+                        <td ><?php echo $edad; ?></td>
+                        <td ><?php echo $domicilio; ?></td>
+                        <td ><?php echo $telefono; ?></td>
+                        <td ><?php echo $vinculo_nombre; ?></td>
+                            <td ><?php echo $id_cliente; ?></td>
+                        <td ><?php echo $estado_salud; ?></td>
+                    
+                        <td ><?php echo $date_added; ?></td>
+						
 						<td class='text-right'>
 						<a href="#" class='btn btn-default' title='Editar integrante' 
 						data-domicilio = '<?php echo $domicilio;?>' 

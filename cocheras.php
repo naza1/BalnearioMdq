@@ -53,7 +53,7 @@
 							$query_cochera=mysqli_query($conn,"select * from cocheras order by id_cocheras");
 							while($rw=mysqli_fetch_array($query_cochera))	{
 								?>
-							<option value="<?php echo $rw['id_cocheras'];?>"><?php echo $rw['id_cocheras'];?></option>			
+							<option value="<?php echo $rw['id_cocheras'];?>"><?php echo $rw['id_cocheras'];?><?php echo $rw['tipo_contrato'];?></option>			
 								<?php
 							}
 							?>

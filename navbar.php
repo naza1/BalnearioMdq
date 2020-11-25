@@ -22,13 +22,14 @@
        
         <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="cocheras.php"><i class='glyphicon glyphicon-road'></i> Cocheras</a></li>
         <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="clientes.php"><i class='glyphicon glyphicon-user'></i> Clientes</a></li>
+                <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="integrantes.php"><i  class='glyphicon glyphicon-copy'></i> Integrantes</a></li> 
         <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="./facturacion/"><i  class='glyphicon glyphicon-list-alt'></i> Movimientos</a></li> 
-        <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="integrantes.php"><i  class='glyphicon glyphicon-copy'></i> Integrantes Carpa</a></li> 
+
         <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" class='glyphicon glyphicon-cog'></i>Configuracion
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-			<li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="#"><i  class='glyphicon glyphicon-credit-card'></i> Credencial</a></li>
+			<li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="credenciales.php"><i  class='glyphicon glyphicon-credit-card'></i> Credencial</a></li>
 			<li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="listados.php"><i  class='glyphicon glyphicon-print'></i> Listados</a></li>
           <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="descargas.php"><i  class='glyphicon glyphicon-save'></i> Descargas</a></li>
           <li class="<?php if (isset($active_categoria)){echo $active_categoria;}?>"><a href="usuarios.php"><i  class='glyphicon glyphicon-log-in'></i> Usuarios</a></li>

@@ -136,7 +136,7 @@
 		        <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 			        <button type="submit" class="btn btn-primary" id="actualizar_datos">Actualizar datos</button>
-			        
+			       
 
 		        </div>
 		      </form>

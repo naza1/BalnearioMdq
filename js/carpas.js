@@ -82,6 +82,7 @@ $('#editCarpa').on('show.bs.modal', function (event) {
   modal.find('.modal-body #id').val(id_carpa)
 })
 
+
 $("#editar_carpa").submit(function(event) {
   $('#actualizar_datos').attr("disabled", true);
   var parametros = $(this).serialize();
@@ -101,4 +102,7 @@ $("#editar_carpa").submit(function(event) {
 	});
   event.preventDefault();
 })
+
+
+
 

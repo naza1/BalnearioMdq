@@ -70,11 +70,39 @@
       <td style="text-align: center"> <a href="pdf/carpas/listadocarpas.php" target="_blank" class='btn btn-success' title='Descargar'><i class="glyphicon glyphicon-print"></i> </a></td></td>
     </tr>
     <tr>
-      <th scope="row"style="text-align: center">3</th>
+		 <th scope="row"style="text-align: center">3</th>
+      <td>CARPAS</td>
+      <td>LISTADO TOTAL DE CARPAS ALQUILADAS POR DIA</td>
+      <td style="text-align: center"> <a href="pdf/carpaspordia/carpapordia.php" target="_blank" class='btn btn-success' title='Descargar'><i class="glyphicon glyphicon-print"></i> </a></td></td>
+    </tr>
+    <tr>
+	 <tr>
+		 <th scope="row"style="text-align: center">4</th>
+      <td>CARPAS</td>
+      <td>LISTADO TOTAL DE CARPAS ALQUILADAS POR TEMPORADA</td>
+      <td style="text-align: center"> <a href="pdf/carpasporTEMPORADA/carpaportemporada.php" target="_blank" class='btn btn-success' title='Descargar'><i class="glyphicon glyphicon-print"></i> </a></td></td>
+    </tr>
+    <tr>	
+		 <th scope="row"style="text-align: center">5</th>
+      <td>COCHERAS</td>
+      <td>LISTADO TOTAL DE COCHERAS ALQUILADAS POR DIA</td>
+      <td style="text-align: center"> <a href="pdf/cocheraspordia/cocheraspordia.php" target="_blank" class='btn btn-success' title='Descargar'><i class="glyphicon glyphicon-print"></i> </a></td></td>
+    </tr>
+    <tr>
+	 <tr>
+		 <th scope="row"style="text-align: center">6</th>
+      <td>COCHERAS</td>
+      <td>LISTADO TOTAL DE COCHERAS ALQUILADAS POR TEMPORADA</td>
+      <td style="text-align: center"> <a href="pdf/cocherasportemporada/cocherasportemporada.php" target="_blank" class='btn btn-success' title='Descargar'><i class="glyphicon glyphicon-print"></i> </a></td></td>
+    </tr>
+    <tr>	
+      <th scope="row"style="text-align: center">7</th>
       <td>INTEGRANTES</td>
-      <td>LISTADO TOTAL DE INTEGRANTES DADOS DE ALTA EN EL SISTEMA</td>
+      <td>LISTADO TOTAL DE INTEGRANTES DADOS DE ALTA EN EL SISTEMA ( ORDENADOS POR NRO DE CLIENTE )</td>
         <td style="text-align: center"><a href="pdf/integrantes/listadointegrantes.php" target="_blank"class='btn btn-success' title='Descargar'><i class="glyphicon glyphicon-print"></i> </a></td>
     </tr>
+   
+    
   </tbody>
 </table>		
 			</div>

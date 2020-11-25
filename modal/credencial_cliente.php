@@ -103,7 +103,7 @@
 		        <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 			       
-			         <button type="submit" class="btn btn-warning" href="pdf/credencial/credencial.php" target="_blank">Generar Credencial</button>
+			          <a href="#" class='btn btn-default' title='Credencial cliente' onclick="credencial('<?php echo $id; ?>')"><i class="glyphicon glyphicon-credit-card"></i> </a> 
 
 		        </div>
 		      </form>
@@ -122,16 +122,24 @@
 
 
 <script>
-	function imprimir(){
-  var objeto=document.getElementById('credencial');  //obtenemos el objeto a imprimir
-  var ventana=window.open('','_blank');  //abrimos una ventana vacía nueva
-  ventana.document.write(objeto.outerHTML);  //imprimimos el HTML del objeto en la nueva ventana
-  ventana.document.close();  //cerramos el documento
-  ventana.print();  //imprimimos la ventana
-  ventana.close();  //cerramos la ventana
+function credencial(id)
+{
+  var q= $("#q").val();
+  if (confirm("Realmente deseas generar la CREDENCIAL ?")){	
+    $.ajax({
+      type: "GET",
+      url: "./ajax/credencial_cliente.php",
+      data: "id="+id,"q":q,
+      beforeSend: function(objeto){
+      $("#resultados").html("Mensaje: Cargando...");
+    },
+    success: function(datos){
+      $("#resultados").html(datos);
+      load(1);
+    }
+    });
+  }
 }
-
-
 
 
 

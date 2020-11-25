@@ -50,12 +50,13 @@
 				<div class="row">
 					
 					
-					<div class='col-md-4'>
-						<label>TOTAL DE INTEGRANTES </label>
+					<div class='col-md-4 text-center'>
+							<h4 class="text-success">	<label>TOTAL DE INTEGRANTES
+						
 						<?php
 							$query_cliente1=mysqli_query($conn,"select * from integrantes");
 						?>
-						<br><label><?php echo $query_cliente1->num_rows;?></label>
+						<br><label><?php echo $query_cliente1->num_rows;?></label> </h4>
 					</div>
 					<div class='col-md-12 text-center'>
 						<span id="loader"></span>

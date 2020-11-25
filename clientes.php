@@ -9,6 +9,8 @@
 	require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
 	
+	
+	
 	$active_productos="active";
 	$active_carpas="active";
 	
@@ -33,6 +35,7 @@
 				
 			</div>
 			<h4><i class='glyphicon glyphicon-search'></i> CLIENTES</h4>
+			
 		</div>
 		<div class="panel-body">
 			<?php
@@ -62,12 +65,13 @@
 						</select>
 						
 					</div>
-					<div class='col-md-4'>
-						<label>TOTAL DE CLIENTES EN EL BALNEARIO</label>
+					<div class='col-md-4 text-center'>
+						<h4 class="text-success">	<label>TOTAL DE CLIENTES EN EL BALNEARIO
+					
 						<?php
 							$query_cliente1=mysqli_query($conn,"select * from clientes");
 						?>
-						<br><label><?php echo $query_cliente1->num_rows;?></label>
+						<br><label><?php echo $query_cliente1->num_rows;?></label></h4>
 					</div>
 					<div class='col-md-12 text-center'>
 						<span id="loader"></span>
@@ -90,6 +94,7 @@
 	include("footer.php");
 	?>
 	<script type="text/javascript" src="js/clientes.js"></script>
+	<script type="text/javascript" src="js/credencial.js"></script>
 	
 	
 	

@@ -4,6 +4,15 @@
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 	
+	function getPostById($id)
+{
+ 
+	$result = $mysqli->query('SELECT * FROM clientes  WHERE Id ='.$id);
+	$row = mysqli_fetch_assoc($result);
+	
+    return $row;
+}
+	
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	if($action == 'ajax'){
 		// escaping, additionally removing everything that could be (html/javascript-) code
@@ -88,7 +97,9 @@
 						
 					?>
 					<tr>
-                        <td><?php echo $id; ?></td>
+				
+                        <td><a href="./pdf/credenciales/listadocredenciales.php?id=<?php echo $_GET['id'] ?>">PDF</a> <?php echo $id; ?></td> 
+					
 						<td><?php echo $nombre; ?></td>
 						<td><?php echo $dni; ?></td>						
 						<td ><?php echo $idCarpa;?></td> 
@@ -117,6 +128,8 @@
 						data-cochera2 = '<?php echo $cochera2;?>' 
 						data-toggle = "modal" 
 						data-target = "#editClient"><i class="glyphicon glyphicon-credit-card"></i></a> 
+						
+					
 						
 						
 					  

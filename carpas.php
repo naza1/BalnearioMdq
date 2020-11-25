@@ -44,6 +44,7 @@
 			<?php
 			include("modal/registro_carpas.php");
 			include("modal/editar_carpas.php");
+			include("modal/editar_carpa_estado.php");
 			?>
 			<form class="form-horizontal" role="form" id="datos">
 				
