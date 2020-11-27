@@ -78,7 +78,7 @@
 							    	$query_cliente = mysqli_query($conn,"select * from carpas order by Id");
 							    	while($rw=mysqli_fetch_array($query_cliente))	{
 							  	?>
-							  	<option value="<?php echo $rw['Id'];?>"><?php echo $rw['Id'];?></option>
+							  	 <option value="<?php echo $rw['Id'];?>"><?php echo $rw['Id'];?>  <?php echo $rw['tipo_estado'];?> <?php echo $rw['tipo_contrato'];?></option>
 							  	<?php
 							  	}
 							  	?>
@@ -94,7 +94,7 @@
 							      $query_cocheras=mysqli_query($conn,"select * from cocheras order by id_cocheras");
 							      while($rw=mysqli_fetch_array($query_cocheras))	{
 								  ?>
-							    <option value="<?php echo $rw['id_cocheras'];?>"><?php echo $rw['id_cocheras'];?></option>
+							     <option value="<?php echo $rw['id_cocheras'];?>"><?php echo $rw['id_cocheras'];?> <?php echo $rw['tipo_contrato'];?></option>
 								  <?php
 							      }
 							    ?>
@@ -110,7 +110,7 @@
 							      $query_cocheras=mysqli_query($conn,"select * from cocheras order by id_cocheras");
 							      while($rw=mysqli_fetch_array($query_cocheras))	{
 								  ?>
-							    <option value="<?php echo $rw['id_cocheras'];?>"><?php echo $rw['id_cocheras'];?></option>
+							      <option value="<?php echo $rw['id_cocheras'];?>"><?php echo $rw['id_cocheras'];?> <?php echo $rw['tipo_contrato'];?></option>
 								  <?php
 							      }
 							    ?>
@@ -136,7 +136,7 @@
 		        <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 			        <button type="submit" class="btn btn-primary" id="actualizar_datos">Actualizar datos</button>
-			       
+			        
 
 		        </div>
 		      </form>

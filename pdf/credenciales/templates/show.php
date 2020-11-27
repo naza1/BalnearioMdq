@@ -1,6 +1,5 @@
 
 <?php require_once '../model.php'; ?>
-
 <?php $post = getPostById($_GET['id']); ?>
 
 <html>

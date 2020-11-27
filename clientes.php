@@ -44,12 +44,12 @@
 			?>
 			<form class="form-horizontal" role="form" id="datos">
 				<div class="row">
-					<div class='col-md-4'>
-						<label>Filtrar por Nro. de Cliente</label>
+					<div class='col-md-2'>
+						<label>Nro. de Cliente</label>
 						<input type="text" class="form-control" id="q" placeholder="Ingrese Numero" onkeyup='load(1);'>
 					</div>
 					
-					<div class='col-md-4'>
+					<div class='col-md-3'>
 						<label>Filtrar por Cliente</label>
 						<select class='form-control' name='cliente_id' id='cliente_id' onchange="load(1);">
 							<option value="">Seleccione un cliente</option>
@@ -65,13 +65,16 @@
 						</select>
 						
 					</div>
+						<div class='col-md-3'>
+						
+					</div>
 					<div class='col-md-4 text-center'>
-						<h4 class="text-success">	<label>TOTAL DE CLIENTES EN EL BALNEARIO
+						<h5 class="text-success">	<label>TOTAL DE CLIENTES EN EL BALNEARIO
 					
 						<?php
 							$query_cliente1=mysqli_query($conn,"select * from clientes");
 						?>
-						<br><label><?php echo $query_cliente1->num_rows;?></label></h4>
+						<br><label><?php echo $query_cliente1->num_rows;?></label></h5>
 					</div>
 					<div class='col-md-12 text-center'>
 						<span id="loader"></span>

@@ -1,9 +1,10 @@
 <?php
 	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
 	/* Connect To Database*/
+	require_once("../pdf/credenciales/model.php");
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
-	
+
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	if($action == 'ajax'){
 		// escaping, additionally removing everything that could be (html/javascript-) code
@@ -118,7 +119,7 @@
 						data-toggle = "modal" 
 						data-target = "#editClient"><i class="glyphicon glyphicon-search"></i></a> 
 						
-						
+					    <a  target="_blank" class='btn btn-default' title='Credencial cliente' href="pdf/credenciales/templates/showPdf.php?id=<?php echo $row['Id']; ?>"><i class="glyphicon glyphicon-credit-card"></i></a>	
 					  
 					    <a href="#" class='btn btn-default' title='Borrar cliente' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a> 
 					    
@@ -127,7 +128,7 @@
                        
 						$html=""; //Vamos a concatenar con esta variable
 						if( $telefono ) {
-                        $html.='<a class="button" href="http://api.whatsapp.com/send?phone='.$telefono.'">Whatsapp</a>';
+                        $html.='<a class="btn btn-default" title="Whatsapp" href="http://api.whatsapp.com/send?phone='.$telefono.'"><i class="glyphicon glyphicon-phone"></i></a>';
 
                        
                         }else{

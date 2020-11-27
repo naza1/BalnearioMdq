@@ -1003,7 +1003,7 @@ function Output($dest='', $name='', $isUTF8=false)
 	if($dest=='')
 		$dest = 'I';
 	if($name=='')
-		$name = 'CredencialPrincesa.pdf';
+		$name = 'doc.pdf';
 	switch(strtoupper($dest))
 	{
 		case 'I':

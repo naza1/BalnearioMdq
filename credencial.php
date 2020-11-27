@@ -51,18 +51,13 @@
 					
 					<div class='col-md-4'>
 						<label>Filtrar por Cliente</label>
-						<select class='form-control' name='cliente_id' id='cliente_id' onchange="load(1);">
-							<option value="">Seleccione un cliente</option>
-							
-							<?php 
-							$query_cliente=mysqli_query($conn,"select * from clientes order by _nombre");
-							while($rw=mysqli_fetch_array($query_cliente))	{
-								?>
-							<option value="<?php echo $rw['Id'];?>"><?php echo $rw['_nombre'];?></option>
-								<?php
-							}
-							?>
-						</select>
+					<body>
+	<form action="respuesta.php" method="post">
+	 <input type="hidden" name="vienedelform" value="si" />
+	 <input type="text" placeholder="Nombre" name="nombre" value="" />
+	 <input type="submit" value="Enviar" />
+	</form>
+</body>
 						
 					</div>
 					<div class='col-md-4'>

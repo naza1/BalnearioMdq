@@ -45,5 +45,5 @@ $pdf->AddPage();
 
 
 
-$pdf->Output();
+$pdf->Output(I,'credencial.pdf');
 ?>

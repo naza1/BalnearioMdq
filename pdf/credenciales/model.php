@@ -14,7 +14,7 @@ function openConex(){
 function getPosts(){	
 	$mysqli = openConex();
 	
-	$result = $mysqli->query('SELECT * FROM clientes ORDER BY _nombre ');	
+	$result = $mysqli->query('SELECT * FROM clientes ORDER BY _nombre');	
 
 	return $result;	
 }
