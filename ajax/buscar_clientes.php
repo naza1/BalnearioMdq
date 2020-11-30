@@ -120,7 +120,7 @@
 						data-target = "#editClient"><i class="glyphicon glyphicon-search"></i></a> 
 						
 					    <a  target="_blank" class='btn btn-default' title='Credencial cliente' href="pdf/credenciales/templates/showPdf.php?id=<?php echo $row['Id']; ?>"><i class="glyphicon glyphicon-credit-card"></i></a>	
-					  
+					    <a  target="_blank" class='btn btn-default' title='Credencial auto' href="pdf/cocheras/templates/auto.php?id=<?php echo $row['Id']; ?>"><i class="glyphicon glyphicon-road"></i></a>	
 					    <a href="#" class='btn btn-default' title='Borrar cliente' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a> 
 					    
 					   <?php
@@ -132,7 +132,7 @@
 
                        
                         }else{
-                        $html.="Sin Num."; //Esto es opcional
+                        $html.="S. / N."; //Esto es opcional
 } 
 echo $html;
 
