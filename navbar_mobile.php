@@ -12,7 +12,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="principal_mobile.php">Control Beach</a>
+      <a class="navbar-brand" href="principalmobile.php">Control Beach Seguridad</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
