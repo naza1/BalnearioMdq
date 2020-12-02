@@ -41,8 +41,12 @@
 		_id_carpa='".$carpa."',
 		_contrato='".$contrato."',
 		id_cochera1='".$cochera1."',
-		id_cochera2='".$cochera2."'
+		id_cochera2='".$cochera2."',
 		WHERE Id='".$id."'";
+        
+        
+
+
 
 		$query_update = mysqli_query($conn,$sql);
 			if ($query_update){
@@ -50,16 +54,30 @@
 
 				$carpaId = mysqli_query($conn, "SELECT Id FROM carpas WHERE _id_cliente='".$id."'");
 				$row = mysqli_fetch_assoc($carpaId);
-			  $idCarpaOld = $row['Id'];
-				$sqlCarpaOld = "UPDATE carpas SET _id_cliente=NULL WHERE Id='".$idCarpaOld."'";
+				$idCarpaOld = $row['Id'];
+				$sqlCarpaOld = "UPDATE carpas SET _id_cliente=NULL , tipo_contrato=0 , tipo_estado='LIBRE'  WHERE Id='".$idCarpaOld."'";
 				$query_new_insert = mysqli_query($conn, $sqlCarpaOld);
-				$sqlCarpa = "UPDATE carpas SET _id_cliente='".$id."' WHERE Id='".$carpa."'";
-				$query_new_insert = mysqli_query($conn, $sqlCarpa);
-
+				$sqlCarpa1 = "UPDATE carpas SET _id_cliente='".$id."' WHERE Id='".$carpa."'";
+				$query_new_insert = mysqli_query($conn, $sqlCarpa);				
+               
+                $sqlCarpa2 = "UPDATE carpas SET  tipo_contrato='".$contrato."' WHERE Id='".$carpa."'";
+                $query_new_insert = mysqli_query($conn, $sqlCarpa);
+               
+                $sqlCarpa3 = "UPDATE carpas SET  tipo_estado='ALQUILADA' WHERE Id='".$carpa."'";
+                $query_new_insert = mysqli_query($conn, $sqlCarpa);  
+				
 				$cocheraSql1 = "UPDATE cocheras SET id_cliente='".$id."' WHERE id_cocheras='".$cochera1."'";
 				$query_new_insert = mysqli_query($conn, $cocheraSql1);
+				$cocheraSql1 = "UPDATE cocheras SET  tipo_contrato='".$contrato."' WHERE id_cocheras='".$cochera1."'";
+				$query_new_insert = mysqli_query($conn, $cocheraSql1);			
 				$cocheraSql2 = "UPDATE cocheras SET id_cliente='".$id."' WHERE id_cocheras='".$cochera2."'";
 				$query_new_insert = mysqli_query($conn, $cocheraSql2);
+                $cocheraSql2 = "UPDATE cocheras SET  tipo_contrato='".$contrato."' WHERE id_cocheras='".$cochera2."'";
+				$query_new_insert = mysqli_query($conn, $cocheraSql2);
+
+
+				
+							   
 
 			} else{
 				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($conn);
