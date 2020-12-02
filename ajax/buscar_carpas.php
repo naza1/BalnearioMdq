@@ -110,7 +110,7 @@
 					 <a href="#" class='btn btn-default' title='Editar Carpa Ocupantes' data-id='<?php echo $id_carpa;?>' data-pasillo='<?php echo $id_pasillo;?>' data-detalle='<?php echo $detalle_carpa;?>'  data-contrato='<?php echo $tipo_contrato?>' data-estado='<?php echo $tipo_estado;?>' data-cliente='<?php echo $id_cliente;?>' data-ocupacion_actual='<?php echo $ocupacion_actual;?>'data-toggle="modal" data-target="#editCarpa"><i class="glyphicon glyphicon-user"></i></a>
 			 
 					 
-					<a href="#" class='btn btn-default' title='Borrar Carpa' onclick="eliminar('<?php echo $id_carpa; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
+					<a href="#" class='btn btn-default' title='Borrar Carpa' onclick="eliminar('<?php echo $id_carpa; ?>')"><i class="glyphicon glyphicon-erase"></i> </a>
 					
 					</td>
 						
